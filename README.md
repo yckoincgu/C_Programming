@@ -1,1 +1,1 @@
-# C_Programming
+# C_Programming provides a repository for assignments.
