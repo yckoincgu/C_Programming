@@ -5,6 +5,7 @@ int a(){
 }
 int main(){
 	char x;
+	
 	a();
 	scanf("%c",x);
 	return 0;

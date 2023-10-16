@@ -2,10 +2,11 @@
 
 int main(){
 	if((1==2)&&(1<=2)){
-	printf("ture");
+		printf("ture");
 	}
 	else{
-	printf("false");
+		printf("false");
 	}
+	return 0;
 }
 

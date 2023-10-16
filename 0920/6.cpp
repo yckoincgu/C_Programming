@@ -1,18 +1,17 @@
 #include <stdio.h>
 int main()
 {
-   
+   int a,b;
    for(int a=0;a<=4;a++)
 	{
-	printf("\n");
+		printf("\n");
 	
-	for(int b=0;b<=a;b++)
-	{
-	printf("*",a,b); 
-	
-	}	
+		for(int b=0;b<=a;b++)
+		{
+			printf("*"); 
+		}	
 	}
 	
 
-return 0;
+	return 0;
 }
