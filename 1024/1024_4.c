@@ -3,15 +3,15 @@ int main ()
   
 {
 	int i, j, a;
-	for(i=1;i<4;i++)
+	for(i=1;i<5;i++)
    {
 	 for(j=4;j>0;j--)
        
 	      if(i>=j)printf("*");
-        	else printf(" ");  
+        	else printf("0");  
 	      printf("\n");
     }
-     for(a=0;a<4;a++)
-     printf("*");
+    
+     
 return 0;
 }
