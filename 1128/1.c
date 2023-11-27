@@ -8,7 +8,7 @@ void printBinary(int n){
 	int  i;
 	
 	if (n==0) printf("the binary value is 0");
-	i=n%2;
+	
 	
 	for(i=31; i>=0; i--){
 		bits[i]= n % 2;
