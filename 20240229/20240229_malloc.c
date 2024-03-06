@@ -1,14 +1,14 @@
-#include <stdio.h> /* perror */
-#include <errno.h> /* errno */
+#include <stdio.h> 	/* perror */
+#include <errno.h> 	/* errno */
 #include <stdlib.h> /* malloc, free, exit */
 int main(void)
 {
 	/* Pointer to char, requesting dynamic allocation of 2,000,000,000
-	* storage elements (declared as an integer constant of type
-	* unsigned long int). (If your system has less than 2 GB of memory
-	* available, then this call to malloc will fail.)
+	 * storage elements (declared as an integer constant of type
+	 * unsigned long int). (If your system has less than 2 GB of memory
+	 * available, then this call to malloc will fail.)
 	*/
-	char *ptr = malloc(2000000000UL);
+	char *ptr = malloc(2000000000UL);	// GB=2^30 bytes; 2000000000UL=2GB 
 	if (ptr == NULL) {
 		perror("malloc failed");
 		/* here you might want to exit the program or compensate
@@ -18,6 +18,7 @@ int main(void)
 		/* The rest of the code hereafter can assume that 2,000,000,000
 		* chars were successfully allocated...
 		*/
+		printf("successfully allocate 2GB memory for malloc");
 		free(ptr);
 	}
 	exit(EXIT_SUCCESS); /* exiting program */

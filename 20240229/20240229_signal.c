@@ -6,6 +6,7 @@ static void catch_function(int signal) {
 }
 int main(void) {
 	if (signal(SIGINT, catch_function) == SIG_ERR) {
+		// SIG_ERR is not a valid signal number.
 		// When the user presses Ctrl+C, 
 		// the signalHandler (catch_function) function will be called
 		fputs("The Ctrl+C occurred with error under setting a signal handler.\n", stderr);

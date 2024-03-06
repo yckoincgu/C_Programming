@@ -1,4 +1,4 @@
-#include <stdio.h> /* for fprintf and stderr */
+#include <stdio.h> 	/* for fprintf and stderr */
 #include <stdlib.h> /* for exit */
 int main( void )
 {
@@ -8,6 +8,7 @@ int main( void )
 	if (divisor == 0) {
 		/* Example handling of this error. Writing a message to stderr, and
 		* exiting with failure.
+		* stderr: console or terminal, a file for error message
 		*/
 		fprintf(stderr, "Division by zero! Aborting...\n");
 		exit(EXIT_FAILURE); /* indicate failure.*/
