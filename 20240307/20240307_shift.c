@@ -17,7 +17,7 @@ int main(void)
 	   
 	y = 2 | 3;	// or operator
 	printf("y= %d\n", y); 
-	y = 2 & 3;	// or operator
+	y = 2 & 3;	// and operator
 	printf("y= %d\n", y); 	
 	
     return 0;
