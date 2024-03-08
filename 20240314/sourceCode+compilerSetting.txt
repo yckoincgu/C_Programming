@@ -1,0 +1,2 @@
+get source code, chatGPT "windows C, socket"
+setup compiler, https://blog.csdn.net/qq_41854911/article/details/128277876, 
