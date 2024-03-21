@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	int *ptr;	// Declaration of an integer pointer
+	int *ptr; 	// Declaration of an integer pointer
 				// 1. *  is the deferencing operator
 				// 2. value = *ptr;
 		  		
@@ -26,8 +26,8 @@ int main(void)
 			
 	for(i=0; i<5; i++, dynamicArray++, num++){
 		// 6. dynamicArray++; Moves dynamicArray to the next memory location of the same data type
-		dynamicArray=&num;
-		printf("the dynamicArray value in array are %d \n", *dynamicArray);
+		dynamicArray=&num;	// no good !!
+		//printf("the dynamicArray value in array are %d \n", *dynamicArray);
 	}
 				
 	free(dynamicArray);			
