@@ -18,13 +18,19 @@ int main(void)
 	ptr = NULL; // 5. Assigning NULL to ptr
 				// 6. Allocating memory for an integer array
 	int *dynamicArray = (int*)malloc(5 * sizeof(int)); 
-	printf("the dynamicArray address is %p \n", dynamicArray);			
+	/*	Alternative way:
+		int *dynamicArray;
+		dynamicArray = malloc(5 * sizeof(int)); 
+	*/
+	printf("the dynamicArray address is %p \n", dynamicArray);
+				
 	for(i=0; i<5; i++, dynamicArray++, num++){
+		// 6. dynamicArray++; Moves dynamicArray to the next memory location of the same data type
 		dynamicArray[i]=num;
 		printf("the dynamicArray value in array [] are %d \n", dynamicArray[i]);
 	}
 				
 	free(dynamicArray);			
-				// 6. dynamicArray++; Moves dynamicArray to the next memory location of the same data type
+				
 	return 0;
 }
