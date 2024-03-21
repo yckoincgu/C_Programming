@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	int *ptr; 	// Declaration of an integer pointer
+	int *ptr;	// Declaration of an integer pointer
 				// 1. *  is the deferencing operator
 				// 2. value = *ptr;
 		  		
