@@ -7,19 +7,20 @@ int main(void)
 				// 1. *  is the deferencing operator
 				// 2. value = *ptr;
 		  		
-	*ptr = 2; // 3. In C, assigning an integer value directly to a pointer is generally not recommended
-	 				//    as it can lead to unexpected behavior and errors
-	 				// *ptr = (int) 2;   no good	
+	*ptr = 2; 	// 3. In C, assigning an integer value directly to a pointer is generally not recommended
+	 			//    as it can lead to unexpected behavior and errors
+	 			// *ptr = (int) 2;   no good	
 	printf("the ptr pointer value by assigning integer directly is %d \n", *ptr);	
 		
 	int num=10, i=5;
 	ptr= &num;
 	printf("the ptr pointer value is %d \n", *ptr);			
-				// 4. the address operator '&': int *ptr = &num;
-				//    Pointer ptr now holds the address of the variable num
+			// 4. the address operator '&': int *ptr = &num;
+			//    Pointer ptr now holds the address of the variable num
 				
 	ptr = NULL; // 5. Assigning NULL to ptr
-				// 6. Allocating memory for an integer array
+	
+	// 6. Allocating memory for an integer array
 	int *dynamicArray = (int*)malloc(5 * sizeof(int)); 
 	printf("the dynamicArray address is %p \n", dynamicArray);	
 			
