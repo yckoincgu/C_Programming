@@ -14,12 +14,6 @@ int main(void)
 	struct Student b11255001;
 	struct Student *ptr;
 	
-	c = 10;
-	ptrInt = &c; 	/* ptrInt points to c */
-	d = *ptrInt; 	/* d is assigned the value to which ptrInt points, 10 */
-	ptrInt = &d; 	/* now points to d */
-	*ptrInt = 12; 	/* d is now 12; not recommended */
-	printf("the ptrInt value is %d \n", *ptrInt);
 	
 	ptr = &b11255001;
 	(*ptr).id = 3; 		/* (*ptr).id  */
@@ -29,5 +23,6 @@ int main(void)
 	printf("the ptr pointer value of ptr->height is %d \n", *ptr);	
 	
 	*ptrInt = ptr->id; 	/* eqivalent to d = b11255001.id; */
+	printf("*ptrInt = %d", *ptrInt);
 	return 0;
 }
