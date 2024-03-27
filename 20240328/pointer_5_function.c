@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-const int arrayDelimiter=3;
 	
 int getArrayLength(int *yarray);
 
