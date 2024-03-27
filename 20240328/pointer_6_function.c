@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 	
-int addBasedOn10(int x, int y);
-
 void dPrint(int *digits, int size){
 	int i;
 	for(i=0; i<size; i++) printf("%d", digits[i]);
