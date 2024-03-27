@@ -13,7 +13,7 @@ int main(void)
 {
 	
 	printf("the Student_SIZE is %d \n", Student_SIZE);
-	struct Student *ptr=&ourStudent[0];
+	struct Student *ptr=&ourStudent[0];  // or *ptr=ourStudent;
 	ptr->id=100;
 	ptr++;
 	ptr->id=200;

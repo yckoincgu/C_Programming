@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+/* 
+	'\0': string delimiter in C language 
+*/
 
 int main(void)
 {
@@ -16,7 +18,7 @@ int main(void)
 	for (i=0; i< sizeof(xstring); i++) {
 		printf("%c", xstring[i]);
 	}
-	
+	printf("\n");
 	char ystring[] = 	"This is a very, very long "
 						"string that requires two lines.";
 	printf("the ystring[] contains\n");
