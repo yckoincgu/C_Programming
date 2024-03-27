@@ -11,15 +11,15 @@ struct Student S1, S2, S3, S4;
 
 struct Student *who( int b )
 {
-	struct Student *returnStudent;
+	struct Student *studentAddress;
 
-	if (b == 1) 	returnStudent = &S1;
-	else if (b==2) 	returnStudent = &S2;
-	else if (b==3) 	returnStudent = &S3;
-	else returnStudent = &S4;
+	if (b == 1) 	studentAddress = &S1;
+	else if (b==2) 	studentAddress = &S2;
+	else if (b==3) 	studentAddress = &S3;
+	else studentAddress = &S4;
 	
 	printf("\n");
-	return returnStudent;
+	return studentAddress;
 }
 
 
