@@ -17,7 +17,7 @@ int main(void)
 	S3.name="mary";
 	S4.name="eric";
 	
-	printf("check Peter by function then assign id with ");
+	printf("check S2 by function then assign id with ");
 	if(assignStudentId( &S2 ))  /* pointer returned from a function. */
 		printf("%d", S2.id);
 	else printf("This assignment failed.");	

@@ -18,12 +18,8 @@ int main(void)
 
 int getArrayLength(int *yarray)
 {
-	int i;
-	printf("check array length one by one: ");
-	for (i=0; i< sizeof(yarray)-arrayDelimiter; i++) 
-		printf("%d, ", yarray[i]);
-	printf("\n");
-	printf("The array length is ");
-	return (int)sizeof(yarray)-arrayDelimiter;
+	// In C, there isn't a specific delimiter for integer arrays 
+	// like the null character '\0' for strings. 
+	return 0;
 }
 

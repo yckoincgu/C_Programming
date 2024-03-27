@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-const int arrayDelimiter=3;
+
 	
 int getArrayLength(int xarray[]);
 
@@ -18,12 +18,8 @@ int main(void)
 
 int getArrayLength(int xarray[])
 {
-	int i;
-	printf("check array length one by one: ");
-	for (i=0; i< sizeof(xarray)-arrayDelimiter; i++) 
-		printf("%d, ", xarray[i]);
-	printf("\n");
-	printf("The array length is ");
-	return (int)sizeof(xarray)-arrayDelimiter;
+	// In C, there isn't a specific delimiter for integer arrays 
+	// like the null character '\0' for strings. 
+	return i;
 }
 

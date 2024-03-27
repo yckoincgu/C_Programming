@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 char S1[]="peter", S2[]="john", S3[]="mary", S4[]="eric";
-const int stringDelimiter=3;	// '\0': 3 characters
 
 char *who( int b )
 {
-	char *returnAddress;
+	char *returnAddress, *tempAddress;
 
 	if (b == 1) 	returnAddress = S1;
 	else if (b==2) 	returnAddress = S2;
@@ -16,8 +16,12 @@ char *who( int b )
 	int i;
 	printf("In sub function \n");
 	printf("who string is \n");
-	for (i=0; i< sizeof(returnAddress)-stringDelimiter; i++) {
-		printf("%c", returnAddress[i]);
+	i=0;
+	tempAddress=returnAddress;
+	while ((int)*tempAddress != 0) {  // '\0' ASCII value =0; 
+		printf("%c", *tempAddress);
+		tempAddress++;
+		i++;
 	}
 	printf("\n");
 	return returnAddress;
@@ -34,8 +38,11 @@ int main(void)
 	
 	student = who( 3 ); /* pointer returned from a function. */
 	printf("In the calling function \n");
-	for (i=0; i< sizeof(student)-stringDelimiter; i++) {
-		printf("%c", student[i]);
+	
+	while ((int)*student != 0) {  // '\0' ASCII value =0; 
+		printf("%c", *student);
+		student++;
+		i++;
 	}	
 	return 0;
 }
