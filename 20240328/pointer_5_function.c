@@ -2,7 +2,7 @@
 #include <stdlib.h>
 const int arrayDelimiter=3;
 	
-int getArrayLength(int xarray[]);
+int getArrayLength(int *yarray);
 
 int main(void)
 {
@@ -16,14 +16,14 @@ int main(void)
 	return 0;
 }
 
-int getArrayLength(int xarray[])
+int getArrayLength(int *yarray)
 {
 	int i;
 	printf("check array length one by one: ");
-	for (i=0; i< sizeof(xarray)-arrayDelimiter; i++) 
-		printf("%d, ", xarray[i]);
+	for (i=0; i< sizeof(yarray)-arrayDelimiter; i++) 
+		printf("%d, ", yarray[i]);
 	printf("\n");
 	printf("The array length is ");
-	return (int)sizeof(xarray)-arrayDelimiter;
+	return (int)sizeof(yarray)-arrayDelimiter;
 }
 
