@@ -1,25 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-	
-int getArrayLength(int xarray[]);
+// Function prototype
+void printArray(int *arr, int size);
 
-int main(void)
-{
-	int S1[4]={0,1,2,3}, 
-		S2[5]={0,1,2,3,4}, 
-		S3[6]={0,1,2,3,4,5}, 
-		S4[7]={0,1,2,3,4,5,6};
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-	printf("%d", getArrayLength( S2 ));
-	
-	return 0;
+    // Call the function, passing a pointer, arr, to the array
+    printArray(arr, size);
+
+    return 0;
 }
 
-int getArrayLength(int xarray[])
-{
-	// In C, there isn't a specific delimiter for integer arrays 
-	// like the null character '\0' for strings. 
-	return i;
+// Function definition
+void printArray(int *arr, int size) {
+	/* In C, there isn't a specific delimiter for integer arrays 
+	   like the null character '\0' for strings. 
+	*/   
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
 }
 
