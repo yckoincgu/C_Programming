@@ -1,9 +1,5 @@
 #include <stdio.h>
 
-/*
-	restrict: the object pointed to by that pointer will only be accessed 
-	through that pointer for the duration of its scope
-*/ 
 char *xstrcpy(char *s1, char *s2)
 {
 	char *dst = s1;
@@ -17,13 +13,21 @@ char *xstrcpy(char *s1, char *s2)
 	return s1;
 }
 
+char *xstrcat(char *x, char *s1, char *s2)
+{
+	char *ptr=xstrcpy(x,s1);
+	
+	while(*ptr != '\0') ptr++;
+	ptr=xstrcpy(ptr,s2);
+	return x;
+}
+
 
 int main(void)
 {
-	char s[]="test";
-	char *copyedStr[sizeof(s)/sizeof(*s)];
+	char s1[]="AAA", s2[]="BBB";
+	char x[sizeof(s1)/sizeof(*s1)+sizeof(s2)/sizeof(*s2)-1];
 	
-	
-	char *ptr=xstrcpy(copyedStr,s);
+	char *ptr=xstrcat(x,s1,s2);
 	while (*ptr != '\0') printf("%c", *ptr++);
 }
