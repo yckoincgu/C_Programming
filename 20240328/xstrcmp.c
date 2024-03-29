@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int (strcmp)(const char *s1, const char *s2)
+int (xstrcmp)(const char *s1, const char *s2)
 {
 	unsigned char uc1, uc2;
 	/* Move s1 and s2 to the first differing characters
@@ -24,7 +24,7 @@ int main(void)
 	char s2[]="test";
 	char *ptr;
 	ptr=s1;
-	if(strcmp(s1, s2)==0) {
+	if(xstrcmp(s1, s2)==0) {
 		printf("They are the same string: ");
 		while (*ptr != '\0') printf("%c", *ptr++);}
 	else printf("They are not the same string");	
