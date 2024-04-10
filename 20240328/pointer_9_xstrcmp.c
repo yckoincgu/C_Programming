@@ -15,6 +15,7 @@ int (xstrcmp)(const char *s1, const char *s2)
 	*/
 	uc1 = (*(unsigned char *) s1);
 	uc2 = (*(unsigned char *) s2);
+	// Typically in C, 0 represents false and any non-zero value represents true.
 	return ((uc1 < uc2) ? -1 : (uc1 > uc2));
 }
 
