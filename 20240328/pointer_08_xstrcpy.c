@@ -20,10 +20,10 @@ char *xstrcpy(char *s1, char *s2)
 
 int main(void)
 {
-	char s[]="test";
-	char copyedStr[sizeof(s)/sizeof(*s)];
+	char sourceStr[]="test";
+	char destinationStr[sizeof(sourceStr)/sizeof(*sourceStr)];
 	
 	
-	char *ptr=xstrcpy(copyedStr,s);
+	char *ptr=xstrcpy(destinationStr,sourceStr);
 	while (*ptr != '\0') printf("%c", *ptr++);
 }
