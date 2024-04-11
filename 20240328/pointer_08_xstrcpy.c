@@ -7,7 +7,7 @@
 char *xstrcpy(char *s1, char *s2)
 {
 	char *dst = s1;
-	const char *src = s2;
+	char *src = s2;
 	/* Do the copying in a loop. */
 	while ((*dst++ = *src++) != '\0');
 	*dst='\0';
@@ -21,7 +21,7 @@ char *xstrcpy(char *s1, char *s2)
 int main(void)
 {
 	char s[]="test";
-	char *copyedStr[sizeof(s)/sizeof(*s)];
+	char copyedStr[sizeof(s)/sizeof(*s)];
 	
 	
 	char *ptr=xstrcpy(copyedStr,s);
