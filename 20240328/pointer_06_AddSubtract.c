@@ -73,7 +73,7 @@ void positiveSubtract(int *adigits, int *bdigits, int *rdigits, int size){
 
 int main(void)
 {
-	int a=125, b=984, i, r;
+	int a=125, b=984, i, r,x=a,y=b;
 	int adigits[32], bdigits[32], rdigits[32], size=sizeof(adigits)/sizeof(*adigits);
 	printf("addition \n");
 	for(i=size-1; i>=0; i--) a=quotientBy10(adigits, i, a);
@@ -92,7 +92,7 @@ int main(void)
 	for(i=size-1; i>=0; i--) rdigits[i]=0;	
 	//dPrint(rdigits, size);
 	
-	if(a>b) positiveSubtract(adigits, bdigits, rdigits, size);
+	if(x>y) positiveSubtract(adigits, bdigits, rdigits, size);
 	else 	negativeSubtract(adigits, bdigits, rdigits, size);
 	
 	
