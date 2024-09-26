@@ -10,7 +10,7 @@
       "stopAtEntry": false,
       "cwd": "/mnt/D/git-workspace/C_Programming/113/VC/0920",
       "environment": [],
-      "externalConsole": true,
+      "externalConsole": false,
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
       "setupCommands": [
@@ -21,8 +21,9 @@
         }
       ],
       "logging": {
-        "engineLogging": false
-      }
+        "engineLogging": true
+      },
+      "console": "integratedTerminal"  // Ensure this is set to use the integrated terminal
     },
     {
       "name": "C/C++ Runner: Debug Session",
