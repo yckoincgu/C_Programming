@@ -44,6 +44,6 @@ int main() {
       printf("others ...");
 
   }
-  
+  printf("\n");
     return 0;
 }
