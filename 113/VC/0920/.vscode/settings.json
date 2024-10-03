@@ -55,5 +55,20 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "editor.tokenColorCustomizations": {
+      "textMateRules": [
+          {
+              "scope": [
+                  "entity.name.function",
+                  "support.function",
+                  "meta.function-call",
+                  "meta.function.definition"
+              ],
+              "settings": {
+                  "foreground": "#00FF00"
+              }
+          }
+      ]
+  }
 }
