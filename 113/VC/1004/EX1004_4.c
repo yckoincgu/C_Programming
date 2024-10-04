@@ -1,15 +1,35 @@
-#include<stdio.h> 
-float CtoF(int C){
-	float F=C*9/5+32;
-	return F; 
-}
-
-int main(){
-	float x;
+#include <stdio.h>
+int main ()
+{
+	for(int i=0;i<=4;i++)
+	{
+		
+		for(int j=4;j>=i;j--)
+		{ 
+		    printf("x");
+	    }
+	    printf("\n");
+	}
+	printf("\n");
+	for(int i=0;i<=4;i++)
+	{
+		
+		for(int j=0;j<=4;j++)
+		{ 
+		    if(j>=i)
+		    {
+		    	printf("x");
+			}
+			else
+			{
+				printf(" ");
+			}
+	    }
+	    printf("\n");
+	}
 	
-	printf("Input C:");
-	scanf("%f",&x);
-	float a=CtoF(x);
-	printf("%f",a);
 	
+	
+	return 0;
 }
+ 
