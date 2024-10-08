@@ -1,0 +1,4 @@
+In your terminal, execute the following commands
+gcc -c lib_test.c -o lib_test.o
+gcc EX1018_1.c lib_test.o -o EX1018_1
+./EX1018_1
