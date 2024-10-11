@@ -10,10 +10,9 @@
                 "-Wextra",
                 "-g3",
                 "/mnt/D/git-workspace/C_Programming/113/VC/1018/EX1018_1.c",
-                "/mnt/D/git-workspace/C_Programming/113/VC/1018/lib_test.o",
+                "/mnt/D/git-workspace/C_Programming/113/VC/1018/lib_test.c", // Add this line to compile lib_test.c directly
                 "-o",
                 "/mnt/D/git-workspace/C_Programming/113/VC/1018/output/EX1018"
-                
             ],
             "group": {
                 "kind": "build",
