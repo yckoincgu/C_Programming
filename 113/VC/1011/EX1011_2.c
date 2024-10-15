@@ -1,54 +1,21 @@
-#include <GLFW/glfw3.h>
-#include <math.h>
+#include <stdio.h>
 
-// Function to draw a circle
-void drawCircle(float cx, float cy, float r, int num_segments) {
-    glBegin(GL_LINE_LOOP);
-    for (int i = 0; i < num_segments; i++) {
-        float theta = 2.0f * M_PI * (float)i / (float)num_segments; // Angle in radians
-        float x = r * cosf(theta); // Calculate the x component
-        float y = r * sinf(theta); // Calculate the y component
-        glVertex2f(x + cx, y + cy); // Output the vertex
-    }
-    glEnd();
-}
 
 int main(void) {
-    // Initialize the library
-    if (!glfwInit()) {
-        return -1;
-    }
+	int a[5], i;
+	a[0]=65;
+	a[1]=66;
+	a[2]=67;
+	a[3]=68;
+	a[4]=69;
 
-    // Create a windowed mode window and its OpenGL context
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Circle Drawing", NULL, NULL);
-    if (!window) {
-        glfwTerminate();
-        return -1;
-    }
+	for(i=4;i>-1;i--)
+		printf(" %c",a[i]);
+    printf("\n");
 
-    // Make the window's context current
-    glfwMakeContextCurrent(window);
+	for(i=2;i>0;i--)
+		printf(" %c",a[i]);
+    printf("\n");
 
-    // Main loop
-    while (!glfwWindowShouldClose(window)) {
-        // Render here, e.g. using OpenGL commands
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        // Set up coordinate system for 2D drawing
-        glMatrixMode(GL_PROJECTION);
-        glLoadIdentity();
-        glOrtho(-320, 320, -240, 240, -1, 1); // Set orthogonal 2D view
-
-        // Draw the circle
-        drawCircle(0, 0, 100, 100);
-
-        // Swap front and back buffers
-        glfwSwapBuffers(window);
-
-        // Poll for and process events
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
-    return 0;
+	return 0;
 }
