@@ -2,7 +2,7 @@
 
 
 // 函數用來顯示圖形A Function to display pattern A
-void TFlogicA() {
+void TF_A() {
     int i, j, space;
 
     // 外層迴圈控制每一行 Outer loop controls the rows
@@ -23,7 +23,7 @@ void TFlogicA() {
 
 
 // 函數用來顯示圖形B Function to display pattern B
-void TFlogicB() {
+void TF_B() {
     int i, j, space;
 
     // 外層迴圈控制每一行 Outer loop controls the rows
@@ -46,11 +46,11 @@ void TFlogicB() {
 int main() {
     // 顯示圖形A Display pattern A
     printf("(A)\n");
-    TFlogicA();
+    TF_A();
 
     // 顯示圖形B Display pattern B
     printf("(B)\n");
-    TFlogicB();
+    TF_B();
 
 
     return 0;
