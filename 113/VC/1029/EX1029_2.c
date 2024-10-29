@@ -22,9 +22,9 @@ int FX_B(int n) {
         x=1;
     else
         {
-            printf("front FX_B(%d) \n", n);
+            printf("PPP FX_B(%d) \n", n);
             x= n*FX_B(n-1);
-            printf("back FX_B(%d) = %d\n", n, x);
+            printf("QQQ FX_B(%d) = %d\n", n, x);
         }    
     return x;    
 }
