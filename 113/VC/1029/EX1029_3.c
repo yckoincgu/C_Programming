@@ -5,6 +5,7 @@ int main() {
 
     for (i = 0; s[i] != '\0'; ++i);
     
-    printf("Length of the string: %d", i);
+    printf("Length of the string: %d\n", i);
+    printf("sizeof s: %d\n", (int)sizeof(s));
     return 0;
 }
