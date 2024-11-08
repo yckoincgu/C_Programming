@@ -19,7 +19,7 @@ printf("Enter id for s3: ");
 
 struct Student students[3] = {s1, s2, s3};
 
-int i=sizeof(s1), j=sizeof(students), studentsLength=j/i;
+int i=sizeof(students[0]), j=sizeof(students), studentsLength=j/i;
 printf(" the number of students is %d \n", studentsLength);
 
 for(i=0; i< studentsLength; i++)
