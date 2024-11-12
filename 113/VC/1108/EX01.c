@@ -8,7 +8,7 @@ struct Student {
 int main(){
 
 char p[10]={"test"};    //  the first way to assign value to C array
-
+printf("p = %s",p);
 
 
 struct Student s1={"john","001"}, s2={"Mary","002"}, s3;
