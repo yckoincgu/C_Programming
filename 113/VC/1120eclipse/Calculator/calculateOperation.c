@@ -13,9 +13,10 @@ void printResult();
 void finalTerminate();
 double getSum_lastOperator();
 double getProduct_lastOperator();
+void runCalculate();
 
 double getNumber() {
-    
+
     //double num;
     int i=0, dotCount=0, breakFlag=0;
 
@@ -167,27 +168,26 @@ double getProduct_lastOperator() {
     return product;
 }
 
-int main(){
 
-        char expression[100];
+void runCalculate(){
+    char expression[100];
 
-	    while (1) {
-		   	activeOperator=lastOperator;
-	    	num=getNumber();
-            strcat(expression, inputStr);
-			lastOperator = getOperator();
-			strcat(expression, trimedStr);
+    while (1) {
+	   	activeOperator=lastOperator;
+    	num=getNumber();
+        strcat(expression, inputStr);
+		lastOperator = getOperator();
+		strcat(expression, trimedStr);
 
-	        if(lastOperator == '=') {
-                strcat(expression, ""); 
-                printf("%s\n", expression); 
-                finalTerminate(); 
-                break;}
-	        if(lastOperator == '+' || lastOperator == '-') sum=getSum_lastOperator();			// if last operator is '+' or '-'
-	        if(lastOperator == '*' || lastOperator == '/') product=getProduct_lastOperator(); 	// if last operator is '*' or '/'
+        if(lastOperator == '=') {
+            strcat(expression, "");
+            printf("%s\n", expression);
+            finalTerminate();
+            break;}
+        if(lastOperator == '+' || lastOperator == '-') sum=getSum_lastOperator();			// if last operator is '+' or '-'
+        if(lastOperator == '*' || lastOperator == '/') product=getProduct_lastOperator(); 	// if last operator is '*' or '/'
 
-	        printf("expression = %s" , expression);
-	        printf("\n");
-	   } // end of while 	
-    return 0;
+        printf("expression = %s" , expression);
+        printf("\n");
+   } // end of while
 }

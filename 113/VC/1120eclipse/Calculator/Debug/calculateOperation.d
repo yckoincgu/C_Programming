@@ -1,0 +1,1 @@
+calculateOperation.o: ../calculateOperation.c
