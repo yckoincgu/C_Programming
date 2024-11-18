@@ -178,7 +178,11 @@ int main(){
 			lastOperator = getOperator();
 			strcat(expression, trimedStr);
 
-	        if(lastOperator == '=') {strcat(expression, trimedStr); printf("%s\n", expression); finalTerminate(); break;}
+	        if(lastOperator == '=') {
+                strcat(expression, ""); 
+                printf("%s\n", expression); 
+                finalTerminate(); 
+                break;}
 	        if(lastOperator == '+' || lastOperator == '-') sum=getSum_lastOperator();			// if last operator is '+' or '-'
 	        if(lastOperator == '*' || lastOperator == '/') product=getProduct_lastOperator(); 	// if last operator is '*' or '/'
 
