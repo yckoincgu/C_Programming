@@ -17,6 +17,7 @@ void printBinary(int n){
 	
 	for(i=0; i<32; i++)
 		printf("%d", bits[i]);
+	printf("\n");	
 		
 }
 
@@ -24,15 +25,17 @@ void printBinary(int n){
 int main ()
   
 {
-	 int a;
-	
+	 int a=15;
+	printf("run while loop to increase integer %d to 20\n", a);
 	while(a<20)
    {
 		(a>5)?a++:a--; 
 	    if(a>0) printf("%d\n", a);
     }
-    
-    printBinary(10);
+
+    printf("\nTransfter integer %d to binary digits. \n", a);
+    printBinary(a);
+
     
     
 return 0;

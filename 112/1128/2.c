@@ -12,6 +12,10 @@ int main ()
 	printf("%p\n", &b);
 	printf("%p\n", &c);
 
+	b=c;
+	printf("After ", &b);
+	printf("%p\n", &b);
+	printf("%p\n", &c);	
 	
 
 return 0;
