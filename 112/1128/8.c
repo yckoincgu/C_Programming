@@ -10,9 +10,9 @@ int main ()
 	printf("%c\n", b);
 	printf("%c\n", *x);	
 	
-	printf("%p\n", &a);
+	printf("a address %p\n", &a);
 	printf("%p\n", &b);	
-	printf("%p\n", &x);	
+	printf("x address %p\n", &x);	
 
 
 return 0;

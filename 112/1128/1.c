@@ -7,6 +7,7 @@ void printBinary(int n){
 	int bits[32];
 	int  i;
 	
+	
 	if (n==0) printf("the binary value is 0");
 	
 	for(i=31; i>=0; i--){

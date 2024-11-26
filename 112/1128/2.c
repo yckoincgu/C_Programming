@@ -8,7 +8,8 @@ int main ()
 	printf("vaiable a value = %d\n", a);
 	printf("The address of variable =  %p\n", &a);
 	
-	int *p=&a;
+	int *p;  // int *p=&a;
+	p=&a;
 	printf("\nThe value of *p = %d", *p);
 	printf("\nThe address of *p = %p\n", p);
 	printf("\n");

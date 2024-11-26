@@ -1,29 +1,16 @@
-
-extern int a=10;
-static int b=10;
-
-
 #include <stdio.h>
 
 void aTest(){
-	
-	printf("%d\n", b);
-	printf("%d\n", a);
-		
+	static int b=10;
+	b += 10;
+	printf("%d\n", b);	
 }
 
 int main ()
-  
 {
-
-	int b=5;
-	int a=5;
-	
-	printf("%d\n", b);
-	printf("%d\n", a);
 	aTest();
-
-return 0;
+	aTest();
+	return 0;
 }
 
 
