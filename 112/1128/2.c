@@ -4,18 +4,25 @@
 int main ()
   
 {
-	register  int a=5;
+	int a=5;
+	printf("vaiable a value = %d\n", a);
+	printf("The address of variable =  %p\n", &a);
+	
+	int *p=&a;
+	printf("\n The value of *p = %d\n", *p);
+	printf("\n The address of p = %p\n", p);
+	printf("\n");
+
+
 	int b=5, c=5;
-	
-	
-	printf("%d\n", a);
-	printf("%p\n", &b);
-	printf("%p\n", &c);
+	printf("The address of b when int b=5:  %p\n", &b);
+	printf("The address of c when int c=5:  %p\n", &c);	
+
 
 	b=c;
-	printf("After ", &b);
-	printf("%p\n", &b);
-	printf("%p\n", &c);	
+	printf("After assignment of b=c, the address of b = %p\n", &b);
+	printf("After assignment of b=c, the address of c = %p\n", &c);	
+
 	
 
 return 0;
