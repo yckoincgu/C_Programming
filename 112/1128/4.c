@@ -7,20 +7,19 @@ void aTest(){
 	b=5;
 	a=5;
 		
-	printf("%d\n", a);	// it does not have the same location as extern a
-	printf("%d\n", b);	// it does not have the same location as static b
-	printf("%p\n", &a);	
-	printf("%p\n", &b);		
+	printf("in function aTest a= %d\n", a);	// it does not have the same location as extern a
+	printf("in function aTest b= %d\n", b);	// it does not have the same location as static b
+	printf("in function aTest the address of a= %p\n", &a);	
+	printf("in function aTest the address of b= %p\n", &b);		
 }
 
 int main ()
 {
 	
-	printf("%d\n", a);	// it does not have the same location as extern a
-	printf("%d\n", b);	// it does not have the same location as static b
-
-	printf("%p\n", &a);	
-	printf("%p\n", &b);	
+	printf("in main function  a= %d\n", a);	// it does not have the same location as extern a
+	printf("in main function  b= %d\n", b);	// it does not have the same location as static b
+	printf("in main function  the address of a= %p\n", &a);	
+	printf("in main function  the address of b= %p\n", &b);		
 	aTest();
 
 return 0;
