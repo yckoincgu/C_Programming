@@ -5,14 +5,19 @@ int main ()
   
 {
 	int a=5;
-	printf("vaiable a value = %d\n", a);
-	printf("The address of variable =  %p\n", &a);
+	printf("variable a's value = %d\n", a);
+	printf("The address of variable, &a =  %p\n", &a);
 	
 	int *p;  // int *p=&a;
 	p=&a;
-	printf("\nThe value of *p = %d", *p);
-	printf("\nThe address of *p = %p\n", p);
+	printf("\nAssign the address of a into p", *p);
+	printf("\nThe address of p = &a = %p\n", p);
+	printf("Get the value of *p = %d\n", *p);
 	printf("\n");
+
+	printf("\nChange the value of variable a by address p, *p=10; \n");
+	*p=10;
+	printf("the variable a's value = %d\n\n", a);
 
 
 	int b=5, c=5;
