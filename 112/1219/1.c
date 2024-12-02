@@ -5,7 +5,7 @@
 void aPrint(int *a, int size){
 	
 	int i;
-	for(i=0; i<size; i++) printf("%d ", a[i]);
+	for(i=0; i<size; i++) printf("%12d ", a[i]);
 		printf("\n");
 }
 
