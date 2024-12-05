@@ -18,6 +18,7 @@ void quicksort(int *p, int low, int high){
 void printxy(int *p, int sizeofArray){
     int i=0;
     for(i=0; i< sizeofArray; i++) printf("%d ",p[i]);
+    printf("\n");
 }
 int partition(int *p, int low, int high){
 
@@ -25,15 +26,14 @@ int partition(int *p, int low, int high){
     for(i=low,pivot=low; i<high+1; i++){
         if(p[i]<p[high]) {
             swap(xy, i, pivot);
-            //p[pivot]=p[i]; // move bigger values to pivot position
             pivot++;
         }  
     }
     swap(xy, pivot, high);
-    return pivot;
+    
     //printf("pivot = %d \n", pivot);
     //printf("sizeofArry = %d\n", (int)sizeof(xarray)/sizeof(xarray[0]));
-    
+    return pivot;
 }
 
 void swap(int *P ,int i , int j ){
