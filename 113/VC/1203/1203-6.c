@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int xy[5]={1,4,2,5,3};
+int xy[5]={3, 2, 1, 4, 2};
 
 void swap(int *P ,int i , int j );
 int  partition(int *p, int low, int high);
