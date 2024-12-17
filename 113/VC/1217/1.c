@@ -1,45 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+int x[5]={3,2,5,1,4};
+
+void partition(int *p, int low, int high);
+void printx(x);
+
+
+void partition(int *p, int low, int high){
+
+}
+
+
+void printx(int *p){
+    int i=0, size=(sizeof(x)/sizeof(x[0]));
+
+    for(i=0; i<size; i++ )
+        printf("%d ", x[i]);
+    printf("\n");    
+}
 
 int main()
 {
+    printx(x);
+    //partition(xa, 2,3);
 
-    // This pointer will hold the
-    // base address of the block created
-    int* ptr;
-    int n, i;
 
-    // Get the number of elements for the array
-    printf("Enter number of elements:");
-    scanf("%d",&n);
-    printf("Entered number of elements: %d\n", n);
-
-    // Dynamically allocate memory using malloc()
-    ptr = (int*)malloc(n * sizeof(int));
-
-    // Check if the memory has been successfully
-    // allocated by malloc or not
-    if (ptr == NULL) {
-        printf("Memory not allocated.\n");
-        exit(0);
-    }
-    else {
-
-        // Memory has been successfully allocated
-        printf("Memory successfully allocated using malloc.\n");
-
-        // Get the elements of the array
-        for (i = 0; i < n; ++i) {
-            ptr[i] = i + 1;
-        }
-
-        // Print the elements of the array
-        printf("The elements of the array are: ");
-        for (i = 0; i < n; ++i) {
-            printf("%d, ", ptr[i]);
-        }
-        printf("\n");
-    }
 
     return 0;
 }
