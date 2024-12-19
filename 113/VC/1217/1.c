@@ -22,7 +22,7 @@ void printx(int *p){
 int main()
 {
     printx(x);
-    //partition(xa, 2,3);
+    partition(xa, 2,3);
 
 
 
