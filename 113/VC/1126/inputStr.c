@@ -8,8 +8,8 @@ char *getExpressionStr() {
 
     // Remove trailing newline character, if present
     char *pointerAtNewLineChar = strchr(userInputStr, '\n');    // return pointer at the new line character
-    if (pointerAtNewLineChar) {
-        *pointerAtNewLineChar = '\0';
+    if (pointerAtNewLineChar) { // if new line character is found
+        *pointerAtNewLineChar = '\0';   // replace the new line character with '\0'
     }
 
     return userInputStr;
