@@ -14,8 +14,6 @@ int partition(int *a, int low, int high){
             if (i>p) swap(a,i,p);
             p++;
         }
-
-        
     }
     swap(a,p,high);
     return p;

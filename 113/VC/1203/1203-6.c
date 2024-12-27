@@ -25,7 +25,7 @@ int partition(int *p, int low, int high){
     int i=0,pivot=0;  // assume high as pivot candidate, then find its indexing position
     for(i=low,pivot=low; i<high+1; i++){
         if(p[i]<p[high]) {
-            swap(xy, i, pivot);
+            if(i>pivot) swap(xy, i, pivot);
             pivot++;
         }  
     }
@@ -42,7 +42,7 @@ void swap(int *P ,int i , int j ){
     P[j] = tmp;
 }
 int main (){
-   
+    printxy(xy, (int)sizeof(xy)/sizeof(xy[0])); 
     quicksort(xy, 0, (int)sizeof(xy)/sizeof(xy[0])-1);
     printxy(xy, (int)sizeof(xy)/sizeof(xy[0])); 
 

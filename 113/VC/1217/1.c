@@ -11,10 +11,11 @@ void partition(int *a, int low, int high){
     int i=low, p=low;
     for(p=low, i=low; i<high; i++){
         
-        if(a[i]<a[high]) 
-            if (i>p) {swap(a,i,p); p++;}
-            else p++;
-        
+        if(a[i]<a[high]){
+            if (i>p) swap(a,i,p);
+            p++;            
+        } 
+
     }
     swap(a,p,high);
 
