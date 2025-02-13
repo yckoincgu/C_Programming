@@ -2,6 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
+
             "label": "build",
             "type": "shell",
             "command": "gcc",
@@ -9,9 +10,9 @@
                 "-Wall",
                 "-Wextra",
                 "-g3",
-                "/mnt/D/git-workspace/C_Programming/113/VC/1011/EX1011_1.c",
+                "${file}
                 "-o",
-                "/mnt/D/git-workspace/C_Programming/113/VC/1011/output/EX1011",
+                "${fileBasenameNoExtension}",
                 "-lglfw",
                 "-lGL",
                 "-lm"
