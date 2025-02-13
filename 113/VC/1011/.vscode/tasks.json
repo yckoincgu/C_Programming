@@ -2,27 +2,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-
-            "label": "build",
+            "label": "Build All",
             "type": "shell",
-            "command": "gcc",
+            "command": "bash", // Or "sh" if you prefer
             "args": [
-                "-Wall",
-                "-Wextra",
-                "-g3",
-                "${file}
-                "-o",
-                "${fileBasenameNoExtension}",
-                "-lglfw",
-                "-lGL",
-                "-lm"
+                "${workspaceFolder}/build_all.sh" // Path to your build script
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": ["$gcc"],
-            "detail": "Generated task for building the project"
+            "problemMatcher": "$gcc",
+            "detail": "Builds all C programs in the project"
         }
     ]
 }
