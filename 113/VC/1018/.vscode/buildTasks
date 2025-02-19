@@ -1,5 +1,0 @@
-mkdir -p output
-gcc -c -o output/hellomake.o hellomake.c -I../include
-gcc -c -o output/hellofunc.o hellofunc.c -I../include
-gcc -o output/hellomake output/hellomake.o output/hellofunc.o -I../include -lm
-./EX1018_1

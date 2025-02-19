@@ -1,0 +1,20 @@
+OUTPUT_DIR = output
+TARGET = hellomake
+SOURCES = hellomake.c hellofunc.c
+OBJECTS = $(addprefix $(OUTPUT_DIR)/,$(SOURCES:.c=.o))
+CFLAGS = -Wall -Wextra -g3
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
+
+$(OBJECTS): | $(OUTPUT_DIR)
+$(OUTPUT_DIR)/%.o: %.c | $(OUTPUT_DIR)
+	gcc $(CFLAGS) -c $< -o $@
+
+$(TARGET): $(OBJECTS)
+	gcc $(CFLAGS) $(OBJECTS) -o $(OUTPUT_DIR)/$(TARGET)
+
+all: $(TARGET)
+
+clean:
+	rm -rf $(OUTPUT_DIR)
