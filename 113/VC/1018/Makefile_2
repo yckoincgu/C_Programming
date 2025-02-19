@@ -1,0 +1,36 @@
+# Directories
+IDIR = ../include  # Include directory
+ODIR = output      # Object files and executable directory
+LDIR = ../lib      # Library directory
+
+# Compiler and flags
+CC = gcc
+CFLAGS = -I$(IDIR)  # Include the header files directory
+LIBS = -lm          # Libraries to link (e.g., math library)
+
+
+# Ensure the output directory exists
+$(ODIR):
+	mkdir -p $(ODIR)
+
+# Rule to compile .c files into .o files and place them in $(ODIR)
+$(ODIR)/%.o: %.c 
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+# Object files
+_OBJ = hellomake.o hellofunc.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))  # Add $(ODIR)/ prefix to object files
+
+# Rule to link object files into the final executable and place it in $(ODIR)
+$(ODIR)/hellomake: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+# Default target
+all: $(ODIR)/hellomake
+
+# Clean up
+clean:
+	rm -f $(ODIR)/*.o $(ODIR)/hellomake *~ core $(IDIR)/*~
+
+# Phony targets
+.PHONY: all clean

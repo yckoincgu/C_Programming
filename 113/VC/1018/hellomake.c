@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "lib_test.h"
+void testFunc_1();
+
 
 int main() {
     testFunc_1();

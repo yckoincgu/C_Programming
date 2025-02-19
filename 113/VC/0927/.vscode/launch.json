@@ -5,7 +5,7 @@
       "name": "Run C Program",
       "type": "cppdbg",
       "request": "launch",
-      "program": "/mnt/D/git-workspace/C_Programming/113/VC/0927/build/Debug/outDebug",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
       "args": [],
       "stopAtEntry": false,
       "cwd": "/mnt/D/git-workspace/C_Programming/113/VC/0927",
@@ -33,7 +33,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "/mnt/D/git-workspace/C_Programming/113/VC/0920",
-      "program": "/mnt/D/git-workspace/C_Programming/113/VC/0920/build/Debug/outDebug",
+      "program": "/mnt/D/git-workspace/C_Programming/113/VC/0920",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

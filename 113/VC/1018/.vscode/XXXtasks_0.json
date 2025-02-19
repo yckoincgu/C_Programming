@@ -1,0 +1,18 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build All Programs",
+            "type": "shell",
+            "command": "bash", // Or sh if you prefer
+            "args": [
+                "${fileDirname}/.vscode/aproject_build.sh" // Path to your build script
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc" // Adjust if using a different compiler
+        }
+    ]
+}

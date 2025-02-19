@@ -5,7 +5,7 @@
             "name": "Run (C)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}", // Path to your executable (adjust if needed)
+            "program": "${fileDirname}/EX1018_1", // Path to your executable (adjust if needed)
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

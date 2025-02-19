@@ -1,0 +1,21 @@
+# Makefile
+TARGET = EX1018
+SOURCES = EX1018_1.c lib_test.c
+OBJECTS = $(SOURCES:.c=.o)
+CFLAGS = -Wall -Wextra -g3 -lGL -lm
+OUTPUT_DIR = output  # Directory for output files
+
+# Create the output directory if it doesn't exist (PHONY target)
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
+
+
+#$(OBJECTS): | $(OUTPUT_DIR) # Object files depend on the output directory
+
+$(TARGET): $(OBJECTS)
+	gcc $(CFLAGS) $(OBJECTS) -o $(OUTPUT_DIR)/$(TARGET)
+
+
+
+#clean:
+#        rm -rf $(OUTPUT_DIR) # Remove the entire output directory

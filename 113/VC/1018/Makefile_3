@@ -1,0 +1,12 @@
+ODIR=output
+$(ODIR):
+	mkdir -p $(ODIR)
+
+OBJECTS=hellomake.o hellofunc.o
+hellomake:$(OBJECTS)
+	gcc -o output/hellomake output/$(OBJECTS) 
+hellomake.o:hellomake.c	
+	gcc -c -o output/hellomake.o hellomake.c 
+hellofunc.o:hellofunc.c	
+	gcc -c -o output/hellofunc.o hellofunc.c 
+	

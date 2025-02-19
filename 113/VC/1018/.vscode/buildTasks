@@ -1,4 +1,5 @@
-In your terminal, execute the following commands
-gcc -c lib_test.c -o lib_test.o
-gcc EX1018_1.c lib_test.o -o EX1018_1
+mkdir -p output
+gcc -c -o output/hellomake.o hellomake.c -I../include
+gcc -c -o output/hellofunc.o hellofunc.c -I../include
+gcc -o output/hellomake output/hellomake.o output/hellofunc.o -I../include -lm
 ./EX1018_1

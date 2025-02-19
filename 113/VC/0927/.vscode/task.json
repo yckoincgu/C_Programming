@@ -2,17 +2,16 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build All",
+            "label": "build",
             "type": "shell",
-            "command": "/usr/bin/gcc",
+            "command": "gcc",
             "args": [
                 "-Wall",
                 "-Wextra",
                 "-g3",
-                "EX1018_1.c",
-                "lib_test.c",  // Include both files
+                "${file}",  // Corrected: Added closing double quote
                 "-o",
-                "EX1018",
+                "${fileDirname}/${fileBasenameNoExtension}", // More robust output path
                 "-lglfw",
                 "-lGL",
                 "-lm"
@@ -21,7 +20,8 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": "$gcc"
+            "problemMatcher": ["$gcc"],
+            "detail": "Builds the active file"
         }
     ]
 }
