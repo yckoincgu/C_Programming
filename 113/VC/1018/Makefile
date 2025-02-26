@@ -1,14 +1,20 @@
-ODIR=output
-$(ODIR):
-	mkdir -p $(ODIR)
+# Makefile
+BINDIR=bin
+BIN = $(BINDIR)/hellomake
+SRCDIR=src
+OBJDIR=obj
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
+CFLAGS = -g3 -Wall  
 
-OBJECTS=hellomake.o hellofunc.o
 
-hellomake.o:hellomake.c	
-	gcc -c hellomake.c -o output/hellomake.o  
-hellofunc.o:hellofunc.c	
-	gcc -c hellofunc.c -o output/hellofunc.o  
+$(BIN):$(OBJECTS)
+	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
 
-hellomake:$(OBJECTS)
-	gcc -o output/hellomake output/$(OBJECTS) 
-	
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	gcc $(CFLAGS) -c $< -o $@
+
+ALL: $(BIN)
+
+clean:
+	rm -f $(BINDIR)/* $(OBJDIR)/*

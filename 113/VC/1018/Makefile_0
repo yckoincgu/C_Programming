@@ -1,16 +1,17 @@
 # Makefile
-TARGET = EX1018
-SOURCES = EX1018_1.c lib_test.c
+BIN = hellomake
+SOURCES = hellomake.c hellofunc.c
 OBJECTS = $(SOURCES:.c=.o)
-CFLAGS = -Wall -Wextra -g3 -lGL -lm
+CFLAGS = -g3 -Wall  
 
 
-$(TARGET): $(OBJECTS)
-	gcc $(CFLAGS) $(OBJECTS) -o $(TARGET)
+$(BIN):$(OBJECTS)
+	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
 
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@
 
+ALL: $(BIN)
 
-#clean:
-#        rm -f $(TARGET) $(OBJECTS)
+clean:
+	rm -f $(BIN) $(OBJECTS)

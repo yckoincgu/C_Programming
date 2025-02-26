@@ -1,36 +1,20 @@
-# Directories
-IDIR = ../include  # Include directory
-ODIR = output      # Object files and executable directory
-LDIR = ../lib      # Library directory
+# Makefile
+BINDIR=bin
+BIN = $(BINDIR)/hellomake
+SRCDIR=src
+OBJDIR=obj
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
+CFLAGS = -g3 -Wall  
 
-# Compiler and flags
-CC = gcc
-CFLAGS = -I$(IDIR)  # Include the header files directory
-LIBS = -lm          # Libraries to link (e.g., math library)
 
+$(BIN):$(OBJECTS)
+	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
 
-# Ensure the output directory exists
-$(ODIR):
-	mkdir -p $(ODIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	gcc $(CFLAGS) -c $< -o $@
 
-# Rule to compile .c files into .o files and place them in $(ODIR)
-$(ODIR)/%.o: %.c 
-	$(CC) -c -o $@ $< $(CFLAGS)
+ALL: $(BIN)
 
-# Object files
-_OBJ = hellomake.o hellofunc.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))  # Add $(ODIR)/ prefix to object files
-
-# Rule to link object files into the final executable and place it in $(ODIR)
-$(ODIR)/hellomake: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-
-# Default target
-all: $(ODIR)/hellomake
-
-# Clean up
 clean:
-	rm -f $(ODIR)/*.o $(ODIR)/hellomake *~ core $(IDIR)/*~
-
-# Phony targets
-.PHONY: all clean
+	rm -f $(BINDIR)/* $(OBJDIR)/*
