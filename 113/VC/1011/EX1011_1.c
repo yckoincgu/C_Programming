@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int main(void) {
 	int a[5], i;
 	a[0]=65;
