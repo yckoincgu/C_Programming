@@ -1,4 +1,6 @@
 # Makefile
+# https://www.youtube.com/watch?v=CRlqU9XzVr4&ab_channel=JacobSorber
+
 BINDIR=bin
 BIN = $(BINDIR)/hellomake
 SRCDIR=src
@@ -7,6 +9,7 @@ SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
 CFLAGS = -g3 -Wall  
 
+ALL: $(BIN)
 
 $(BIN):$(OBJECTS)
 	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
@@ -14,7 +17,7 @@ $(BIN):$(OBJECTS)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	gcc $(CFLAGS) -c $< -o $@
 
-ALL: $(BIN)
+
 
 clean:
 	rm -f $(BINDIR)/* $(OBJDIR)/*

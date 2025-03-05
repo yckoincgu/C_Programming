@@ -1,10 +1,9 @@
 # Makefile
-# https://www.youtube.com/watch?v=CRlqU9XzVr4&ab_channel=JacobSorber
 BIN = hellomake
 SOURCES = hellomake.c hellofunc.c
 OBJECTS = $(SOURCES:.c=.o)
-CFLAGS = -g3 -Wall 	# debugging information
-         			# telling the compiler to enable a standard set of warnings about potential issues 
+CFLAGS = -g3 -Wall 	# debugging information; telling the compiler to enable a standard set of warnings about potential issues 
+	
 
 
 $(BIN):$(OBJECTS)
