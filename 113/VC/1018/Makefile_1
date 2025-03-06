@@ -14,7 +14,5 @@ $(BIN):$(OBJECTS)
 obj/%.o: src/%.c
 	gcc $(CFLAGS) -c $< -o $@
 
-
-
 clean:
 	rm -f $(BIN) $(OBJECTS)
