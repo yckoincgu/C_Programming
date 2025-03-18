@@ -1,12 +1,12 @@
 #include <stdio.h>
 void displayMenu();
-void getInputStringToHeap();
+void getInputAndSetToHeap();
 void freeInputStrings();
 
 int main() {
 
     displayMenu();
-    getInputStringToHeap();
+    getInputAndSetToHeap();
     freeInputStrings();
 
     return 0;

@@ -13,7 +13,7 @@ void clearScreen() {
     system("clear");
 }
 
-void getInputStringToHeap(){
+void getInputAndSetToHeap(){
     // Dynamic allocation example
     
 
