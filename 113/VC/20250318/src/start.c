@@ -5,10 +5,10 @@
 
 int main() {
     displayMenu();
-    int x=0;
+    int intStr=0;
     if(getInputAndSetToHeap()>0) {  // if succeed
-        x=atoi(inputStringDynamic);
-        printBinary(x);
+        intStr=atoi(inputStringDynamic);
+        printBinary(intStr);
     }
         
 

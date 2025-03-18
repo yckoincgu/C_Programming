@@ -30,7 +30,8 @@ int getInputAndSetToHeap(){
         printf("Analysis of your input is presented below\n");
         printf("The length of %s is %d \n", inputStringDynamic, stringLength);
         int i=0;
-        for(i=0; i< stringLength; i++){    
+        for(i=0; i< stringLength; i++){
+            if(i==0 && inputStringDynamic[i]=='-') continue;    
             if(!(inputStringDynamic[i]>='0' && inputStringDynamic[i]<='9')){
                 successFlag=0;
                 printf("%c is an error digit \n", inputStringDynamic[i]);
