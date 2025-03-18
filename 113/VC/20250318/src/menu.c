@@ -13,9 +13,9 @@ void clearScreen() {
     system("clear");
 }
 
-void getInputAndSetToHeap(){
+int getInputAndSetToHeap(){
     // Dynamic allocation example
-    
+    int successFlag=1;
 
     size_t bufferSize = 0;
 
@@ -32,16 +32,21 @@ void getInputAndSetToHeap(){
         printf("Analysis of your input is presented below\n");
         printf("The length of %s is %d \n", inputStringDynamic, stringLength);
         int i=0;
-        for(i=0; i< stringLength; i++)
-            printf("%c\n", inputStringDynamic[i]);
+        for(i=0; i< stringLength; i++){    
+            if(!(inputStringDynamic[i]>='0' && inputStringDynamic[i]<='9')){
+                successFlag=0;
+                printf("%c is an error digit \n", inputStringDynamic[i]);
+            }
+            else printf("%c\n", inputStringDynamic[i]);
+        }   
     } else {
         printf("Error reading input.\n");
+        successFlag=0;
     }
-        
+    return successFlag;
 }
 
 void displayMenu() {
     clearScreen();
-    //int choice;
     printf("Please enter your decimal integer below \n");
 }

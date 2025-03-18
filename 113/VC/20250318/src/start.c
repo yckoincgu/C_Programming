@@ -1,12 +1,13 @@
 #include <stdio.h>
 void displayMenu();
-void getInputAndSetToHeap();
+int getInputAndSetToHeap();
 void freeInputStrings();
 
 int main() {
 
     displayMenu();
-    getInputAndSetToHeap();
+    if(getInputAndSetToHeap()<1) 
+        printf("Error input \n");
     freeInputStrings();
 
     return 0;
