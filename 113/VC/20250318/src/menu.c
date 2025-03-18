@@ -4,7 +4,7 @@
 char *inputStringDynamic = NULL;
 
 
-void clearInputStrings(){
+void freeInputStrings(){
     free(inputStringDynamic); // Free the dynamically allocated memory
     printf("The allocated memory for input is freed already \n");    
 }    
