@@ -15,6 +15,12 @@ int* createArray(int size) {
 
 int main() {
     int* myArray = createArray(5);
+    /*
+        Data allocated on the heap can be accessed 
+        from anywhere in the program, 
+        as long as you have a pointer to it.   
+        It is the programmers responsiblity to manage the memory.
+    */
     if (myArray != NULL) {
         printf("Address of array in main: %p\n", myArray); // Print address in main
         for (int i = 0; i < 5; i++) {
