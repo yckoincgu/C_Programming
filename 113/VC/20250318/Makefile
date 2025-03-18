@@ -6,19 +6,23 @@ BINDIR=bin
 BIN = $(BINDIR)/a
 SRCDIR=src
 OBJDIR=obj
+INCDIR = include
+DEPDIR = .deps
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
-CFLAGS = -g3 -Wall  
+CFLAGS = -g3 -Wall -I$(INCDIR) 
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
+
 
 ALL: $(BIN)
 
 $(BIN):$(OBJECTS)
+	@mkdir -p $(BINDIR)  # Ensure the bin directory exists
 	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	gcc $(CFLAGS) -c $< -o $@
-
-
+	@mkdir -p $(OBJDIR) $(DEPDIR)  # Ensure directories exist
+	gcc $(CFLAGS) $(DEPFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(BINDIR)/* $(OBJDIR)/*
+	rm -rf $(BINDIR)/* $(OBJDIR)/* $(DEPDIR)/*

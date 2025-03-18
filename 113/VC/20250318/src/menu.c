@@ -1,8 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-char *inputStringDynamic = NULL;
+#include "menu.h"
 
+char *inputStringDynamic = NULL;
 
 void freeInputStrings(){
     free(inputStringDynamic); // Free the dynamically allocated memory

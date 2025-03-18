@@ -1,13 +1,18 @@
 #include <stdio.h>
-void displayMenu();
-int getInputAndSetToHeap();
-void freeInputStrings();
+#include <stdlib.h>
+#include "menu.h"
+
 
 int main() {
-
     displayMenu();
-    if(getInputAndSetToHeap()<1) 
-        printf("Error input \n");
+    int x=0;
+    if(getInputAndSetToHeap()>0) {  // if succeed
+        x=atoi(inputStringDynamic);
+        printBinary(x);
+    }
+        
+
+
     freeInputStrings();
 
     return 0;
