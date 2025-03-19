@@ -2,9 +2,13 @@
 
 
 void bPrint(int *bits, int size){
-	
+	int flag=0;	// 
 	int i;
-		for(i=0; i<size; i++) printf("%d", bits[i]);
+		for(i=0; i<size; i++) {
+			if(bits[i] != 0) flag=1;
+			if(flag!=0) printf("%d", bits[i]);
+			else printf("%c", ' ');
+		}	
 		printf("\n");
 }
 
