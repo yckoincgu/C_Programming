@@ -3,7 +3,7 @@
 
 int main(){
     clearScreen();
-    printf("hollow world");
+    printf("hello world \n");
 
     return 0;
 }
