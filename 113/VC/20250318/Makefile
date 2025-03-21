@@ -1,13 +1,12 @@
 # Makefile
 # https://www.youtube.com/watch?v=CRlqU9XzVr4&ab_channel=JacobSorber
-
 BINDIR=bin
-
-BIN = $(BINDIR)/a
 SRCDIR=src
 OBJDIR=obj
 INCDIR = include
 DEPDIR = .deps
+
+BIN = $(BINDIR)/a
 SOURCES = $(wildcard $(SRCDIR)/*.c)
 OBJECTS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SOURCES))
 CFLAGS = -g3 -Wall -I$(INCDIR) 
