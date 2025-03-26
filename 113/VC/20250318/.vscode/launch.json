@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Makefile Program",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/a",  // Path to your compiled executable
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Build with Make",  // This should match your build task label
+            "miDebuggerPath": "/usr/bin/gdb"     // Path to your gdb
+        }
+    ]
+}
