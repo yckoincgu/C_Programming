@@ -4,8 +4,8 @@
 
 
 //extern char *inputStringDynamic;
-void clearScreen();
-//void displayMenu();
+//void clearScreen();
+void displayMenu();
 //int getInputAndSetToHeap();
 //void freeInputStrings();
 //void printBinary(int x);
