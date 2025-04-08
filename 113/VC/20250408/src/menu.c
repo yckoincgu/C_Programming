@@ -28,6 +28,7 @@ int getInputAndSetToHeap(){
         }
 
         printf("You entered: %s\n", inputStringDynamic);
+
         int stringLength = strlen(inputStringDynamic);
         printf("Analysis of your input is presented below\n");
         printf("The length of %s is %d \n", inputStringDynamic, stringLength);
@@ -46,19 +47,30 @@ int getInputAndSetToHeap(){
     return successFlag;
 }
 
+void printLogicalOperatorSymbol(char *operatorName, char *operatorSymbol, char *operatorCode, int strLength){
+    int i=0;
+    //printf("The length is %d \n", strLength);
+    printf("%-25s: %-10s Operator Code is %-10s  \n",operatorName, operatorSymbol,operatorCode);
+    for(i=0; i< strLength; i++)
+        printf("%c", operatorSymbol[i]);
+    printf("\n");    
+}
+
 void displayMenu() {
     clearScreen();
     printf("Logical atom like p, q, r, s, t, and so on \n");
-    printf("Logical AND: %s\n", "\xE2\x88\xA7"); // ∧
-    printf("Logical OR: %s\n", "\xE2\x88\xA8");  // ∨
-    printf("Logical NOT: \xC2\xAC\n");    // ¬
-    printf("Logical Implication: \xE2\x86\x92\n"); // →
-    printf("Logical Equivalence: \xE2\x86\x94\n"); // ↔
-    printf("For All: \xE2\x88\x80\n");      // ∀
-    printf("There Exists: \xE2\x88\x83\n"); // ∃
-    printf("Therefore: \xE2\x88\xB4\n");   // ∴
-    printf("Because: \xE2\x88\xB5\n");     // ∵
-
-    printf("Logical operators like  \n");
+    printf("Logical operators are listed below (Their code depends on systems) \n");
+    printLogicalOperatorSymbol("Logical AND","\xE2\x88\xA7", "\\xE2\\x88\\xA7", strlen("\xE2\x88\xA7")*4);
+    printLogicalOperatorSymbol("Logical OR","\xE2\x88\xA8", "\\xE2\\x88\\xA8", strlen("\xE2\x88\xA8")*4);
+    printLogicalOperatorSymbol("Logical NOT","\xC2\xAC", "\\xC2\\xAC", strlen("\xC2\xAC")*4);
+    printLogicalOperatorSymbol("Logical Implication","\xE2\x86\x92", "\\xE2\\x86\\x92", strlen("\xE2\x86\x92")*4);
+    printLogicalOperatorSymbol("Logical Equivalence","\xE2\x86\x94", "\\xE2\\x86\\x94", strlen("\xE2\x86\x94")*4);
+    printLogicalOperatorSymbol("Logical All","\xE2\x88\x80", "\\xE2\\x88\\x80", strlen("\xE2\x88\x80")*4);
+    printLogicalOperatorSymbol("Logical Exists","\xE2\x88\x83", "\\xE2\\x88\\x83", strlen("\xE2\x88\x83")*4);
+    printLogicalOperatorSymbol("Logical Therefore","\xE2\x88\xB4", "\\xE2\\x88\\xB4", strlen("\xE2\x88\xB4")*4);
+    printLogicalOperatorSymbol("Logical Because","\xE2\x88\xB5", "\\xE2\\x88\\xB5", strlen("\xE2\x88\xB5")*4);
+    printf("Parentheses: ( or )\n");
+    printf("\n");
+    
     printf("Please enter your logical expression below \n");
 }
