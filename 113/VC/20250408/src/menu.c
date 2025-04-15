@@ -48,21 +48,23 @@ int getInputAndSetToHeap(){
 }
 
 void printLogicalOperatorSymbol(char *operatorName, char *operatorSymbol, char *operatorCode, int strLength){
-    int i=0;
+    //int i=0;
     //printf("The length is %d \n", strLength);
-    printf("%-25s: %-10s Operator Code is %-10s  \n",operatorName, operatorSymbol,operatorCode);
-    for(i=0; i< strLength; i++)
-        printf("%c", operatorSymbol[i]);
-    printf("\n");    
+    
+    printf("%-25s %-17s %12s             %-10d \n",operatorName, operatorSymbol, operatorCode, strLength);
+    //for(i=0; i< strLength; i++)
+    //    printf("%c", operatorSymbol[i]);
+    //printf("\n");    
 }
 
 void displayMenu() {
     clearScreen();
     printf("Logical atom like p, q, r, s, t, and so on \n");
     printf("Logical operators are listed below (Their code depends on systems) \n");
+    printf("%-20s %-20s %-20s %10s\n", "Operator Name ", "Operator Symbol", "Program Code", "string length");
     printLogicalOperatorSymbol("Logical AND","\xE2\x88\xA7", "\\xE2\\x88\\xA7", strlen("\xE2\x88\xA7")*4);
     printLogicalOperatorSymbol("Logical OR","\xE2\x88\xA8", "\\xE2\\x88\\xA8", strlen("\xE2\x88\xA8")*4);
-    printLogicalOperatorSymbol("Logical NOT","\xC2\xAC", "\\xC2\\xAC", strlen("\xC2\xAC")*4);
+    printLogicalOperatorSymbol("Logical NOT","\xC2\xAC", "\\xC2\\xAC ", strlen("\xC2\xAC")*4);
     printLogicalOperatorSymbol("Logical Implication","\xE2\x86\x92", "\\xE2\\x86\\x92", strlen("\xE2\x86\x92")*4);
     printLogicalOperatorSymbol("Logical Equivalence","\xE2\x86\x94", "\\xE2\\x86\\x94", strlen("\xE2\x86\x94")*4);
     printLogicalOperatorSymbol("Logical All","\xE2\x88\x80", "\\xE2\\x88\\x80", strlen("\xE2\x88\x80")*4);
@@ -73,4 +75,5 @@ void displayMenu() {
     printf("\n");
     
     printf("Please enter your logical expression below \n");
+    getInputAndSetToHeap();
 }
