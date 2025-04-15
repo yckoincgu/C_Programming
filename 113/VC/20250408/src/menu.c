@@ -13,6 +13,12 @@ void clearScreen() {
     system("clear");
 }
 
+void printLogicExpression(*s){
+    
+
+
+}
+
 int getInputAndSetToHeap(){
     // Dynamic allocation example
     int successFlag=1;
