@@ -31,43 +31,31 @@ void clearScreen() {
     system("clear");
 }
 
-long int operatorPosition(char *s){
-    char *ptr;
-    //long int position=0;
-    ptr = strstr(s, "\xE2\x88\xA7"); //position=ptr;
-    return (long int) ptr;
+int getSpacePosition(char *s){
+    char *ptr=s, space=(int) 32;
+    int i=0;
+    while(ptr != NULL && *ptr != space) {
+        ptr++; i++; 
+    }
+    
+    return i;
 }
 
 
 void printLogicExpression(char *s, int strLength){
-    int start_position=0, end_position=strLength;
-    char *ptr=s, *qtr=NULL;
-    int  i=0;
+    //int start_position=0, end_position=strLength;
+    char *ptr=s, head[20], space=(int) 32;
+    int spacePosition=0, startPosition=0, i=0;
     printf("starting analysis\n");
-    while(start_position != strLength){
-        
-        ptr = strstr(ptr, "\\x");   // the first symbol in an expression
-        
-        
-        if (ptr == NULL) {
-            start_position=end_position+12;
-            end_position=strLength;
-            for(i=start_position; i < end_position && s[i] != '\0'; i++) printf("%c", s[i]); 
-            break;
-        }
-        
+    while(ptr !=NULL && *ptr != '\0'){
 
-        end_position=(int)(ptr-s);
-        for(i=start_position; i < end_position && s[i] != '\0'; i++) 
+        spacePosition=getSpacePosition(ptr);
+        for (i=startPosition; startPosition<spacePosition; startPosition++ )
             printf("%c", s[i]);
+        ptr = ptr+spacePosition;   // the first symbol in an expression
+        printf("tail %s\n", ptr);
+        startPosition=spacePosition;
         
-        qtr=ptr;
-        while( qtr != NULL){
-
-        }    
-
-        start_position=end_position+12;    
-        ptr = ptr + start_position;   
     }
     printf("\n"); 
 
