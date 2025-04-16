@@ -13,9 +13,26 @@ void clearScreen() {
     system("clear");
 }
 
-void printLogicExpression(char *s){
-    
-    printf("You entered: %s\n", s);
+long int operatorPosition(char *s){
+    char *ptr;
+    //long int position=0;
+    ptr = strstr(s, "\xE2\x88\xA7"); //position=ptr;
+    return (long int) ptr;
+}
+void printLogicExpression(char *s, int strLength){
+    int start_position=0, end_position=strLength;
+    char tempStr[strLength];
+    char *ptr=NULL; ptr=s;
+    int  i=0;
+    while(start_position != end_position){
+        start_position = (int) (strstr(ptr, "\xE2\x88\xA7")-s);
+        for(i=0; i<start_position && s[i] != '\0'; i++)
+            tempStr[i]=s[i];
+        tempStr[i]='\0';    
+        printf("You entered: %s\n", tempStr);    
+    }
+
+    printf("You entered: %s %s\n", tempStr , "\xE2\x88\xA7");
 
 }
 
@@ -32,10 +49,11 @@ int getInputAndSetToHeap(){
         if (newlineChar != NULL) {
             *newlineChar = '\0';    // null-terminated character for C string
         }
-        printLogicExpression(inputStringDynamic);
+        int stringLength = strlen(inputStringDynamic);
+        printLogicExpression(inputStringDynamic, stringLength);
         
 
-        int stringLength = strlen(inputStringDynamic);
+        
         printf("Analysis of your input is presented below\n");
         printf("The length of %s is %d \n", inputStringDynamic, stringLength);
         int i=0;
