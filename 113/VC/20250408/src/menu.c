@@ -1,7 +1,24 @@
 #include <locale.h>
 #include <wchar.h>
 #include "menu.h"
-
+char *Logical_AND_Symbol="\xE2\x88\xA7",
+     *Logical_AND_code="\\xE2\\x88\\xA7",
+     *Logical_OR_Symbol="\xE2\x88\xA8",
+     *Logical_OR_code="\\xE2\\x88\\xA8",
+     *Logical_NOT_Symbol="\xC2\xAC",
+     *Logical_NOT_code="\\xC2\\xAC",
+     *Logical_Implication_Symbol="\xE2\x86\x92",
+     *Logical_Implication_code="\\xE2\\x86\\x92",
+     *Logical_Equivalence_Symbol="\xE2\x86\x94",
+     *Logical_Equivalence_code="\\xE2\\x86\\x94",
+     *Logical_All_Symbol="\xE2\x88\x80",
+     *Logical_All_code="\\xE2\\x88\\x80",
+     *Logical_Exists_Symbol="\xE2\x88\x83",
+     *Logical_Exists_code="\\xE2\\x88\\x83",
+     *Logical_Therefore_Symbol="\xE2\x88\xB4",
+     *Logical_Therefore_code="\\xE2\\x88\\xB4",
+     *Logical_Because_Symbol="\xE2\x88\xB5",
+     *Logical_Because_code="\\xE2\\x88\\xB5";
 char *inputStringDynamic = NULL;
 
 
@@ -24,22 +41,31 @@ long int operatorPosition(char *s){
 
 void printLogicExpression(char *s, int strLength){
     int start_position=0, end_position=strLength;
-    char *ptr=s;
+    char *ptr=s, *qtr=NULL;
     int  i=0;
     printf("starting analysis\n");
     while(start_position != strLength){
-
-        ptr = strstr(ptr, "\\xE2\\x88\\xA7");
+        
+        ptr = strstr(ptr, "\\x");   // the first symbol in an expression
+        
+        
         if (ptr == NULL) {
             start_position=end_position+12;
             end_position=strLength;
             for(i=start_position; i < end_position && s[i] != '\0'; i++) printf("%c", s[i]); 
             break;
         }
+        
+
         end_position=(int)(ptr-s);
         for(i=start_position; i < end_position && s[i] != '\0'; i++) 
             printf("%c", s[i]);
-            
+        
+        qtr=ptr;
+        while( qtr != NULL){
+
+        }    
+
         start_position=end_position+12;    
         ptr = ptr + start_position;   
     }
