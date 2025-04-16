@@ -31,10 +31,10 @@ void clearScreen() {
     system("clear");
 }
 
-int getSpacePosition(char *s){
+int getWordLength(char *s){
     char *ptr=s, space=(int) 32;
     int i=0;
-    while(ptr != NULL && *ptr != space) {
+    while(*ptr != '\0' && *ptr != space) {
         ptr++; i++; 
     }
     
@@ -45,26 +45,20 @@ int getSpacePosition(char *s){
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
     char *ptr=s;
-    int spacePosition=0, startPosition=0, i=0;
+    int wordLength=0, startPosition=1, i=0;
     printf("starting analysis\n");
-    while(ptr !=NULL && *ptr != '\0'){
-
-        spacePosition=getSpacePosition(ptr);
-        for (i=startPosition; i<spacePosition; i++ )
-            printf("%c", s[i]);
+    while(startPosition <= strLength){
+        wordLength=getWordLength(ptr);
+        for (i=startPosition; i<startPosition+wordLength; i++ )
+            printf("%c", s[i-1]);
         printf("\n");    
+        //printf("wordLength = %d\n", wordLength);    
         
-        ptr = ptr+spacePosition+1;   // the first symbol in an expression
-        startPosition=spacePosition+1;
-        if(startPosition > strLength-1) break;
-        printf("tail %s\n", ptr);
-        startPosition=spacePosition;
-        
+        ptr = ptr+wordLength+1;   // the first character in an expression
+        startPosition=startPosition+wordLength+1;   // segment with twp positions
+        //printf("startPosition= %d\n", startPosition);
     }
     printf("\n"); 
-
-    //printf("You entered: %s %s\n", tempStr , "\xE2\x88\xA7");
-
 }
 
 int getInputAndSetToHeap(){
