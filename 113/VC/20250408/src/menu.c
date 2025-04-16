@@ -44,15 +44,19 @@ int getSpacePosition(char *s){
 
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
-    char *ptr=s, head[20], space=(int) 32;
+    char *ptr=s;
     int spacePosition=0, startPosition=0, i=0;
     printf("starting analysis\n");
     while(ptr !=NULL && *ptr != '\0'){
 
         spacePosition=getSpacePosition(ptr);
-        for (i=startPosition; startPosition<spacePosition; startPosition++ )
+        for (i=startPosition; i<spacePosition; i++ )
             printf("%c", s[i]);
-        ptr = ptr+spacePosition;   // the first symbol in an expression
+        printf("\n");    
+        
+        ptr = ptr+spacePosition+1;   // the first symbol in an expression
+        startPosition=spacePosition+1;
+        if(startPosition > strLength-1) break;
         printf("tail %s\n", ptr);
         startPosition=spacePosition;
         
