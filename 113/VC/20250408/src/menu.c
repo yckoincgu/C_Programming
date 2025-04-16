@@ -4,6 +4,7 @@
 
 char *inputStringDynamic = NULL;
 
+
 void freeInputStrings(){
     free(inputStringDynamic); // Free the dynamically allocated memory
     printf("The allocated memory for input is freed already \n");    
@@ -19,20 +20,32 @@ long int operatorPosition(char *s){
     ptr = strstr(s, "\xE2\x88\xA7"); //position=ptr;
     return (long int) ptr;
 }
+
+
 void printLogicExpression(char *s, int strLength){
     int start_position=0, end_position=strLength;
-    char tempStr[strLength];
-    char *ptr=NULL; ptr=s;
+    char *ptr=s;
     int  i=0;
-    while(start_position != end_position){
-        start_position = (int) (strstr(ptr, "\xE2\x88\xA7")-s);
-        for(i=0; i<start_position && s[i] != '\0'; i++)
-            tempStr[i]=s[i];
-        tempStr[i]='\0';    
-        printf("You entered: %s\n", tempStr);    
-    }
+    printf("starting analysis\n");
+    while(start_position != strLength){
 
-    printf("You entered: %s %s\n", tempStr , "\xE2\x88\xA7");
+        ptr = strstr(ptr, "\\xE2\\x88\\xA7");
+        if (ptr == NULL) {
+            start_position=end_position+12;
+            end_position=strLength;
+            for(i=start_position; i < end_position && s[i] != '\0'; i++) printf("%c", s[i]); 
+            break;
+        }
+        end_position=(int)(ptr-s);
+        for(i=start_position; i < end_position && s[i] != '\0'; i++) 
+            printf("%c", s[i]);
+            
+        start_position=end_position+12;    
+        ptr = ptr + start_position;   
+    }
+    printf("\n"); 
+
+    //printf("You entered: %s %s\n", tempStr , "\xE2\x88\xA7");
 
 }
 
@@ -83,19 +96,21 @@ void operatorTable(char *operatorName, char *operatorSymbol, char *operatorCode,
 
 void displayMenu() {
     clearScreen();
+    
     printf("Logical atom like p, q, r, s, t, and so on \n");
     //printf("Logical operators are listed below (Their code depends on systems) \n");
     printf("%-20s %-20s %-20s %10s\n", "Operator Name ", "Operator Symbol", "Program Code", "string length");
-    operatorTable("Logical AND","\xE2\x88\xA7", "\\xE2\\x88\\xA7", strlen("\xE2\x88\xA7")*4);
-    operatorTable("Logical OR","\xE2\x88\xA8", "\\xE2\\x88\\xA8", strlen("\xE2\x88\xA8")*4);
-    operatorTable("Logical NOT","\xC2\xAC", "\\xC2\\xAC ", strlen("\xC2\xAC")*4);
-    operatorTable("Logical Implication","\xE2\x86\x92", "\\xE2\\x86\\x92", strlen("\xE2\x86\x92")*4);
-    operatorTable("Logical Equivalence","\xE2\x86\x94", "\\xE2\\x86\\x94", strlen("\xE2\x86\x94")*4);
-    operatorTable("Logical All","\xE2\x88\x80", "\\xE2\\x88\\x80", strlen("\xE2\x88\x80")*4);
-    operatorTable("Logical Exists","\xE2\x88\x83", "\\xE2\\x88\\x83", strlen("\xE2\x88\x83")*4);
-    operatorTable("Logical Therefore","\xE2\x88\xB4", "\\xE2\\x88\\xB4", strlen("\xE2\x88\xB4")*4);
-    operatorTable("Logical Because","\xE2\x88\xB5", "\\xE2\\x88\\xB5", strlen("\xE2\x88\xB5")*4);
-    printf("Parentheses: ( or )\n");
+    operatorTable("Logical AND",Logical_AND_Symbol, Logical_AND_code, strlen(Logical_AND_Symbol)*4);
+    operatorTable("Logical OR",Logical_OR_Symbol, Logical_OR_code, strlen(Logical_OR_Symbol)*4);
+    operatorTable("Logical NOT",Logical_NOT_Symbol, Logical_NOT_code, strlen(Logical_NOT_Symbol)*4);
+    operatorTable("Logical Implication",Logical_Implication_Symbol, Logical_Implication_code, strlen(Logical_Implication_Symbol)*4);
+    operatorTable("Logical Equivalence",Logical_Equivalence_Symbol, Logical_Equivalence_code, strlen(Logical_Equivalence_Symbol)*4);
+    operatorTable("Logical All",Logical_All_Symbol, Logical_All_code, strlen(Logical_All_Symbol)*4);
+    operatorTable("Logical Exists",Logical_Exists_Symbol, Logical_Exists_code, strlen(Logical_Exists_Symbol)*4);
+    operatorTable("Logical Therefore",Logical_Therefore_Symbol, Logical_Therefore_code, strlen(Logical_Therefore_Symbol)*4);
+    operatorTable("Logical Because",Logical_Because_Symbol, Logical_Because_code, strlen(Logical_Because_Symbol)*4);
+    printf("LeftParentheses:  ( \n");
+    printf("RightParentheses: ) \n");
     printf("\n");
     
     printf("Please enter your logical expression below \n");
