@@ -46,12 +46,18 @@ void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
     char *ptr=s;
     int wordLength=0, startPosition=1, i=0;
+    char tmpArray[20];
     printf("starting analysis\n");
     while(startPosition <= strLength){
         wordLength=getWordLength(ptr);
+
         for (i=startPosition; i<startPosition+wordLength; i++ )
-            printf("%c", s[i-1]);
-        printf("\n");    
+            //printf("%c", s[i-1]);
+            tmpArray[i-startPosition]=s[i-1];
+        tmpArray[i-startPosition] ='\0';  
+        printf("%s\n", tmpArray); 
+            
+                    //printf("\n");    
         //printf("wordLength = %d\n", wordLength);    
         
         ptr = ptr+wordLength+1;   // the first character in an expression
