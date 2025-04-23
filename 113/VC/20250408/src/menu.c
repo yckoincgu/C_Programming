@@ -43,24 +43,30 @@ int getWordLength(char *s){
 }
 
 int cmpStr(char *p, char*q, int wordLength){
-    char *ptr=p, *qtr=q;
-    int i=0, cmpFlag=0, p0=0, q1=1;
-    //qtr=Logical_AND_Symbol_Pointer;
+    char *qtr=q;    // Symbol_pointer
+         
+    int i=0, matchSymbol=1, // suppose match symbol at first
+    result=0;
+    
+    
     for(i=0; i<wordLength; i++){
-        if(*ptr != *qtr) {cmpFlag ++; return p0;}
-        ptr++; qtr++;
-    }
+        if((int)p[i] == 92) {continue;};
+        if(abs((int)p[i] - (int)(*qtr)) == 0) {qtr++;}
+        else {matchSymbol =0; break;}
+    }    
+    if(matchSymbol) result=1;
+    else result=0;
 
-    return q1;
+    return result;
 }
 
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
-    char *ptr=s, *qtr=NULL;
+    char *ptr=s;
     int wordLength=0, startPosition=0, i=0, j=0;
     char tmpArray[20];
-    int matchSymbol=1;      
-    printf("\n starting analysis\n");
+
+    printf("\nYour input logical statement as below: \n");
     while(startPosition < strLength){
         wordLength=getWordLength(ptr);
 
@@ -68,32 +74,17 @@ void printLogicExpression(char *s, int strLength){
             //printf("%c", s[i-1]);
             tmpArray[j]=s[i];
         tmpArray[j] ='\0';  
-        //printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
-        matchSymbol=1;  // suppose match symbol at first
-        
-        qtr="u2227";
-        for(i=0; i<wordLength; i++){
-            if((int)tmpArray[i] == 92) {continue;};
-            if(abs((int)tmpArray[i] - (int)(*qtr)) == 0) {qtr++;}
-            else {matchSymbol =0; break;}
-        }
 
-        //cmpFlag=cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray));
-        printf("matchSymbol = %d ", matchSymbol);
-        if(matchSymbol==1) {printf("    match symbol %s\n ",Logical_AND_Symbol_Pointer ); }
-        else {printf("   no match symbol %s\n ", tmpArray);}
+        if(cmpStr(tmpArray, "u2227", strlen(tmpArray))==1) printf("%s ",Logical_AND_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2228", strlen(tmpArray))==1) printf("%s ",Logical_OR_Symbol_Pointer);
+        else {printf("%s ", tmpArray);}
 
-        
-                    //printf("\n");    
-        //printf("wordLength = %d\n", wordLength);    
-        
         ptr = ptr+wordLength;   // the first character in an expression
         i=0;
         while(*ptr == ' ')  {ptr++;i++;}
         startPosition=startPosition+wordLength+i;   // segment with twp positions
-        //printf("startPosition= %d\n", startPosition);
     }
-    printf("\n"); 
+    printf("\n\n"); 
 }
 
 int getInputAndSetToHeap(){
@@ -132,13 +123,8 @@ int getInputAndSetToHeap(){
 }
 
 void operatorTable(char *operatorName, char *operatorSymbol_Pointer, char *operatorCode, int strLength){
-    //int i=0;
-    //printf("The length is %d \n", strLength);
-    
+
     printf("%-25s %-17s %12s %15d \n",operatorName, operatorSymbol_Pointer, operatorCode, strLength);
-    //for(i=0; i< strLength; i++)
-    //    printf("%c", operatorSymbol_Pointer[i]);
-    //printf("\n");    
 }
 
 void displayMenu() {
