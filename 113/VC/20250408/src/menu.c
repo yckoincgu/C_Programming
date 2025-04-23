@@ -129,6 +129,7 @@ void displayMenu() {
     operatorTable("Logical Because",Logical_Because_Symbol, Logical_Because_code, strlen(Logical_Because_Symbol)*4);
     printf("LeftParentheses:  ( \n");
     printf("RightParentheses: ) \n");
+    printf("Logical statements: P, Q, R, T \n");
     printf("\n");
     
     printf("Please enter your logical expression below \n");
