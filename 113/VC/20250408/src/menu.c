@@ -49,7 +49,7 @@ char *cmpStr(char *p, char*q, int wordLength){
         ptr++; qtr++;
     }
     if(cmpFlag ==0) {
-        printf("founf symbol %s\n ", Logical_AND_Symbol_Pointer);  
+        //printf("founf symbol %s\n ", Logical_AND_Symbol_Pointer);  
         return Logical_AND_Symbol_Pointer;
     }    
 
@@ -65,7 +65,6 @@ void printLogicExpression(char *s, int strLength){
     char *ptr=s;
     int wordLength=0, startPosition=1, i=0;
     char tmpArray[20];
-    wchar_t symbolArray[2];
     int cmpFlag=0;
     printf("\n starting analysis\n");
     while(startPosition <= strLength){
@@ -75,7 +74,7 @@ void printLogicExpression(char *s, int strLength){
             //printf("%c", s[i-1]);
             tmpArray[i-startPosition]=s[i-1];
         tmpArray[i-startPosition] ='\0';  
-        printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
+        //printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
         cmpFlag=0;
         
         ptr=Logical_AND_Symbol_Pointer;
