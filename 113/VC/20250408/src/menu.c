@@ -77,6 +77,8 @@ void printLogicExpression(char *s, int strLength){
 
         if(cmpStr(tmpArray, "u2227", strlen(tmpArray))==1) printf("%s ",Logical_AND_Symbol_Pointer);
         else if(cmpStr(tmpArray, "u2228", strlen(tmpArray))==1) printf("%s ",Logical_OR_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u00AC", strlen(tmpArray))==1) printf("%s ",Logical_NOT_Symbol_Pointer);
+
         else {printf("%s ", tmpArray);}
 
         ptr = ptr+wordLength;   // the first character in an expression
