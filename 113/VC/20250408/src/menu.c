@@ -57,30 +57,31 @@ int cmpStr(char *p, char*q, int wordLength){
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
     char *ptr=s, *qtr=NULL;
-    int wordLength=0, startPosition=1, i=0;
+    int wordLength=0, startPosition=0, i=0, j=0;
     char tmpArray[20];
     int matchSymbol=1;      
     printf("\n starting analysis\n");
-    while(startPosition <= strLength){
+    while(startPosition < strLength){
         wordLength=getWordLength(ptr);
 
-        for (i=startPosition; i<startPosition+wordLength; i++ )
+        for (i=startPosition, j=0; i<startPosition+wordLength; i++, j++ )
             //printf("%c", s[i-1]);
-            tmpArray[i-startPosition]=s[i-1];
-        tmpArray[i-startPosition] ='\0';  
+            tmpArray[j]=s[i];
+        tmpArray[j] ='\0';  
         //printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
-        matchSymbol=1;  // match at first
+        matchSymbol=1;  // suppose match symbol at first
         
-        qtr="2227";
+        qtr="u2227";
         for(i=0; i<wordLength; i++){
-            if(tmpArray[i] == '\\') {ptr++; continue;};
-            if(tmpArray[i] != *qtr) {ptr++; qtr++; matchSymbol=0; break;}
+            if((int)tmpArray[i] == 92) {continue;};
+            if(abs((int)tmpArray[i] - (int)(*qtr)) == 0) {qtr++;}
+            else {matchSymbol =0; break;}
         }
 
         //cmpFlag=cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray));
         printf("matchSymbol = %d ", matchSymbol);
         if(matchSymbol==1) {printf("    match symbol %s\n ",Logical_AND_Symbol_Pointer ); }
-        else {printf("   no match %s\n ", tmpArray); break;}
+        else {printf("   no match symbol %s\n ", tmpArray);}
 
         
                     //printf("\n");    
