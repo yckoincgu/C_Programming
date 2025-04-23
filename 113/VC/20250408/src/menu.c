@@ -19,6 +19,8 @@ char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_Because_code="\\u2235";
 char *inputStringDynamic = NULL;
 
+int cmpStr(char *p, char*q, int wordLength);
+
 // wchar_t unicode_to_wchar(const char *unicode_escape);
 
 void freeInputStrings(){
@@ -40,23 +42,24 @@ int getWordLength(char *s){
     return i;
 }
 
-char *cmpStr(char *p, char*q, int wordLength){
-    char *ptr=p, *qtr=q, *str="No-Match";
-    int i=0, cmpFlag=0;
-    qtr=Logical_AND_Symbol_Pointer;
+int cmpStr(char *p, char*q, int wordLength){
+    char *ptr=p, *qtr=q;
+    int i=0, cmpFlag=0, p0=0, q1=1;
+    //qtr=Logical_AND_Symbol_Pointer;
     for(i=0; i<wordLength; i++){
-        if(*ptr != *qtr) {cmpFlag ++; return p;}
+        if(*ptr != *qtr) {cmpFlag ++; return p0;}
         ptr++; qtr++;
     }
-    return str;
+
+    return q1;
 }
 
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
-    char *ptr=s, *xtr=NULL;
+    char *ptr=s, *qtr=NULL;
     int wordLength=0, startPosition=1, i=0;
     char tmpArray[20];
-    int cmpFlag=0;
+    int matchSymbol=1;      
     printf("\n starting analysis\n");
     while(startPosition <= strLength){
         wordLength=getWordLength(ptr);
@@ -66,22 +69,27 @@ void printLogicExpression(char *s, int strLength){
             tmpArray[i-startPosition]=s[i-1];
         tmpArray[i-startPosition] ='\0';  
         //printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
-        cmpFlag=0;
+        matchSymbol=1;  // match at first
         
-        xtr=Logical_AND_Symbol_Pointer;
+        qtr="2227";
         for(i=0; i<wordLength; i++){
-            if(tmpArray[i] != *xtr) cmpFlag++;
-            xtr++;
+            if(tmpArray[i] == '\\') {ptr++; continue;};
+            if(tmpArray[i] != *qtr) {ptr++; qtr++; matchSymbol=0; break;}
         }
-        printf("%s\n ", cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray)));
-        //else printf("%s\n", tmpArray);
 
-            
+        //cmpFlag=cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray));
+        printf("matchSymbol = %d ", matchSymbol);
+        if(matchSymbol==1) {printf("    match symbol %s\n ",Logical_AND_Symbol_Pointer ); }
+        else {printf("   no match %s\n ", tmpArray); break;}
+
+        
                     //printf("\n");    
         //printf("wordLength = %d\n", wordLength);    
         
-        ptr = ptr+wordLength+1;   // the first character in an expression
-        startPosition=startPosition+wordLength+1;   // segment with twp positions
+        ptr = ptr+wordLength;   // the first character in an expression
+        i=0;
+        while(*ptr == ' ')  {ptr++;i++;}
+        startPosition=startPosition+wordLength+i;   // segment with twp positions
         //printf("startPosition= %d\n", startPosition);
     }
     printf("\n"); 
