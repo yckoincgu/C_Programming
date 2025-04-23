@@ -1,26 +1,25 @@
-#include <locale.h>
-#include <wchar.h>
 #include "menu.h"
-char *Logical_AND_Symbol="\xE2\x88\xA7",
-     *Logical_AND_code="\\xE2\\x88\\xA7",
-     *Logical_OR_Symbol="\xE2\x88\xA8",
-     *Logical_OR_code="\\xE2\\x88\\xA8",
-     *Logical_NOT_Symbol="\xC2\xAC",
-     *Logical_NOT_code="\\xC2\\xAC",
-     *Logical_Implication_Symbol="\xE2\x86\x92",
-     *Logical_Implication_code="\\xE2\\x86\\x92",
-     *Logical_Equivalence_Symbol="\xE2\x86\x94",
-     *Logical_Equivalence_code="\\xE2\\x86\\x94",
-     *Logical_All_Symbol="\xE2\x88\x80",
-     *Logical_All_code="\\xE2\\x88\\x80",
-     *Logical_Exists_Symbol="\xE2\x88\x83",
-     *Logical_Exists_code="\\xE2\\x88\\x83",
-     *Logical_Therefore_Symbol="\xE2\x88\xB4",
-     *Logical_Therefore_code="\\xE2\\x88\\xB4",
-     *Logical_Because_Symbol="\xE2\x88\xB5",
-     *Logical_Because_code="\\xE2\\x88\\xB5";
+char *Logical_AND_Symbol_Pointer="\u2227",
+     *Logical_AND_code="\\u2227",
+     *Logical_OR_Symbol_Pointer="\u2228",
+     *Logical_OR_code="\\u2228",
+     *Logical_NOT_Symbol_Pointer="\u00AC",
+     *Logical_NOT_code="\\u00AC",
+     *Logical_Implication_Symbol_Pointer="\u2192",
+     *Logical_Implication_code="\\u2192",
+     *Logical_Equivalence_Symbol_Pointer="\u2194",
+     *Logical_Equivalence_code="\\u2194",
+     *Logical_All_Symbol_Pointer="\u2200",
+     *Logical_All_code="\\u2200",
+     *Logical_Exists_Symbol_Pointer="\u2203",
+     *Logical_Exists_code="\\u2203",
+     *Logical_Therefore_Symbol_Pointer="\u2234",
+     *Logical_Therefore_code="\\u2234",
+     *Logical_Because_Symbol_Pointer="\u2235",
+     *Logical_Because_code="\\u2235";
 char *inputStringDynamic = NULL;
 
+// wchar_t unicode_to_wchar(const char *unicode_escape);
 
 void freeInputStrings(){
     free(inputStringDynamic); // Free the dynamically allocated memory
@@ -41,13 +40,34 @@ int getWordLength(char *s){
     return i;
 }
 
+char *cmpStr(char *p, char*q, int wordLength){
+    char *ptr=p, *qtr=q, *str="No found";
+    int i=0, cmpFlag=0;
+    qtr=Logical_AND_Symbol_Pointer;
+    for(i=0; i<wordLength; i++){
+        if(*ptr != *qtr) {cmpFlag ++; return "no";}
+        ptr++; qtr++;
+    }
+    if(cmpFlag ==0) {
+        printf("founf symbol %s\n ", Logical_AND_Symbol_Pointer);  
+        return Logical_AND_Symbol_Pointer;
+    }    
+
+
+
+    
+
+    return str;
+}
 
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
     char *ptr=s;
     int wordLength=0, startPosition=1, i=0;
     char tmpArray[20];
-    printf("starting analysis\n");
+    wchar_t symbolArray[2];
+    int cmpFlag=0;
+    printf("\n starting analysis\n");
     while(startPosition <= strLength){
         wordLength=getWordLength(ptr);
 
@@ -55,7 +75,16 @@ void printLogicExpression(char *s, int strLength){
             //printf("%c", s[i-1]);
             tmpArray[i-startPosition]=s[i-1];
         tmpArray[i-startPosition] ='\0';  
-        printf("%s\n", tmpArray); 
+        printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
+        cmpFlag=0;
+        
+        ptr=Logical_AND_Symbol_Pointer;
+        for(i=0; i<wordLength; i++){
+            if(tmpArray[i] != *ptr) cmpFlag++;
+            ptr++;
+        }
+        if(cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray)) != NULL) printf("%s\n ", Logical_AND_Symbol_Pointer);
+
             
                     //printf("\n");    
         //printf("wordLength = %d\n", wordLength);    
@@ -102,13 +131,13 @@ int getInputAndSetToHeap(){
     return successFlag;
 }
 
-void operatorTable(char *operatorName, char *operatorSymbol, char *operatorCode, int strLength){
+void operatorTable(char *operatorName, char *operatorSymbol_Pointer, char *operatorCode, int strLength){
     //int i=0;
     //printf("The length is %d \n", strLength);
     
-    printf("%-25s %-17s %12s %15d \n",operatorName, operatorSymbol, operatorCode, strLength);
+    printf("%-25s %-17s %12s %15d \n",operatorName, operatorSymbol_Pointer, operatorCode, strLength);
     //for(i=0; i< strLength; i++)
-    //    printf("%c", operatorSymbol[i]);
+    //    printf("%c", operatorSymbol_Pointer[i]);
     //printf("\n");    
 }
 
@@ -117,16 +146,16 @@ void displayMenu() {
     
     printf("Logical atom like p, q, r, s, t, and so on \n");
     //printf("Logical operators are listed below (Their code depends on systems) \n");
-    printf("%-20s %-20s %-20s %10s\n", "Operator Name ", "Operator Symbol", "Program Code", "string length");
-    operatorTable("Logical AND",Logical_AND_Symbol, Logical_AND_code, strlen(Logical_AND_Symbol)*4);
-    operatorTable("Logical OR",Logical_OR_Symbol, Logical_OR_code, strlen(Logical_OR_Symbol)*4);
-    operatorTable("Logical NOT",Logical_NOT_Symbol, Logical_NOT_code, strlen(Logical_NOT_Symbol)*4);
-    operatorTable("Logical Implication",Logical_Implication_Symbol, Logical_Implication_code, strlen(Logical_Implication_Symbol)*4);
-    operatorTable("Logical Equivalence",Logical_Equivalence_Symbol, Logical_Equivalence_code, strlen(Logical_Equivalence_Symbol)*4);
-    operatorTable("Logical All",Logical_All_Symbol, Logical_All_code, strlen(Logical_All_Symbol)*4);
-    operatorTable("Logical Exists",Logical_Exists_Symbol, Logical_Exists_code, strlen(Logical_Exists_Symbol)*4);
-    operatorTable("Logical Therefore",Logical_Therefore_Symbol, Logical_Therefore_code, strlen(Logical_Therefore_Symbol)*4);
-    operatorTable("Logical Because",Logical_Because_Symbol, Logical_Because_code, strlen(Logical_Because_Symbol)*4);
+    printf("%-20s %-20s %-20s %10s\n", "Operator Name ", "Symbol_Pointer", "Pointer Code", "string length");
+    operatorTable("Logical AND",Logical_AND_Symbol_Pointer, Logical_AND_code, strlen(Logical_AND_Symbol_Pointer));
+    operatorTable("Logical OR",Logical_OR_Symbol_Pointer, Logical_OR_code, strlen(Logical_OR_Symbol_Pointer));
+    operatorTable("Logical NOT",Logical_NOT_Symbol_Pointer, Logical_NOT_code, strlen(Logical_NOT_Symbol_Pointer));
+    operatorTable("Logical Implication",Logical_Implication_Symbol_Pointer, Logical_Implication_code, strlen(Logical_Implication_Symbol_Pointer));
+    operatorTable("Logical Equivalence",Logical_Equivalence_Symbol_Pointer, Logical_Equivalence_code, strlen(Logical_Equivalence_Symbol_Pointer));
+    operatorTable("Logical All",Logical_All_Symbol_Pointer, Logical_All_code, strlen(Logical_All_Symbol_Pointer));
+    operatorTable("Logical Exists",Logical_Exists_Symbol_Pointer, Logical_Exists_code, strlen(Logical_Exists_Symbol_Pointer));
+    operatorTable("Logical Therefore",Logical_Therefore_Symbol_Pointer, Logical_Therefore_code, strlen(Logical_Therefore_Symbol_Pointer));
+    operatorTable("Logical Because",Logical_Because_Symbol_Pointer, Logical_Because_code, strlen(Logical_Because_Symbol_Pointer));
     printf("LeftParentheses:  ( \n");
     printf("RightParentheses: ) \n");
     printf("Logical statements: P, Q, R, T \n");

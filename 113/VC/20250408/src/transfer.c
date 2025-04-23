@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "menu.h"
 
 
 void bPrint(int *bits, int size){

@@ -1,6 +1,9 @@
+#include <locale.h>
+#include <wchar.h>
+#include <wchar.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 
 extern char *inputStringDynamic;
