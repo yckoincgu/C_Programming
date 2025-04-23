@@ -41,28 +41,19 @@ int getWordLength(char *s){
 }
 
 char *cmpStr(char *p, char*q, int wordLength){
-    char *ptr=p, *qtr=q, *str="No found";
+    char *ptr=p, *qtr=q, *str="No-Match";
     int i=0, cmpFlag=0;
     qtr=Logical_AND_Symbol_Pointer;
     for(i=0; i<wordLength; i++){
-        if(*ptr != *qtr) {cmpFlag ++; return "no";}
+        if(*ptr != *qtr) {cmpFlag ++; return p;}
         ptr++; qtr++;
     }
-    if(cmpFlag ==0) {
-        //printf("founf symbol %s\n ", Logical_AND_Symbol_Pointer);  
-        return Logical_AND_Symbol_Pointer;
-    }    
-
-
-
-    
-
     return str;
 }
 
 void printLogicExpression(char *s, int strLength){
     //int start_position=0, end_position=strLength;
-    char *ptr=s;
+    char *ptr=s, *xtr=NULL;
     int wordLength=0, startPosition=1, i=0;
     char tmpArray[20];
     int cmpFlag=0;
@@ -77,12 +68,13 @@ void printLogicExpression(char *s, int strLength){
         //printf("%s wordlength = %ld \n", tmpArray, strlen(tmpArray)); 
         cmpFlag=0;
         
-        ptr=Logical_AND_Symbol_Pointer;
+        xtr=Logical_AND_Symbol_Pointer;
         for(i=0; i<wordLength; i++){
-            if(tmpArray[i] != *ptr) cmpFlag++;
-            ptr++;
+            if(tmpArray[i] != *xtr) cmpFlag++;
+            xtr++;
         }
-        if(cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray)) != NULL) printf("%s\n ", Logical_AND_Symbol_Pointer);
+        printf("%s\n ", cmpStr(tmpArray, Logical_AND_Symbol_Pointer, strlen(tmpArray)));
+        //else printf("%s\n", tmpArray);
 
             
                     //printf("\n");    
