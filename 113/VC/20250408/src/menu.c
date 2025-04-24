@@ -66,7 +66,7 @@ void printLogicExpression(char *s, int strLength){
     int wordLength=0, startPosition=0, i=0, j=0;
     char tmpArray[20];
 
-    printf("\nYour input logical statement as below: \n");
+    
     while(startPosition < strLength){
         wordLength=getWordLength(ptr);
 
@@ -78,7 +78,12 @@ void printLogicExpression(char *s, int strLength){
         if(cmpStr(tmpArray, "u2227", strlen(tmpArray))==1) printf("%s ",Logical_AND_Symbol_Pointer);
         else if(cmpStr(tmpArray, "u2228", strlen(tmpArray))==1) printf("%s ",Logical_OR_Symbol_Pointer);
         else if(cmpStr(tmpArray, "u00AC", strlen(tmpArray))==1) printf("%s ",Logical_NOT_Symbol_Pointer);
-
+        else if(cmpStr(tmpArray, "u2192", strlen(tmpArray))==1) printf("%s ",Logical_Implication_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2194", strlen(tmpArray))==1) printf("%s ",Logical_Equivalence_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2200", strlen(tmpArray))==1) printf("%s ",Logical_All_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2203", strlen(tmpArray))==1) printf("%s ",Logical_Exists_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2234", strlen(tmpArray))==1) printf("%s ",Logical_Therefore_Symbol_Pointer);
+        else if(cmpStr(tmpArray, "u2235", strlen(tmpArray))==1) printf("%s ",Logical_Because_Symbol_Pointer);
         else {printf("%s ", tmpArray);}
 
         ptr = ptr+wordLength;   // the first character in an expression
@@ -94,7 +99,7 @@ int getInputAndSetToHeap(){
     int successFlag=1;
 
     size_t bufferSize = 0;
-
+    printf("%30s", "Please enter your logical expression:  ");
     if (getline(&inputStringDynamic, &bufferSize, stdin) != -1) {
         // Remove trailing newlineChar character, if present
         char *newlineChar = strchr(inputStringDynamic, '\n');
@@ -103,6 +108,7 @@ int getInputAndSetToHeap(){
             *newlineChar = '\0';    // null-terminated character for C string
         }
         int stringLength = strlen(inputStringDynamic);
+        printf("%30s   ", "Your input logical statement is:  ");
         printLogicExpression(inputStringDynamic, stringLength);
         
 
@@ -149,6 +155,6 @@ void displayMenu() {
     printf("Logical statements: P, Q, R, T \n");
     printf("\n");
     
-    printf("Please enter your logical expression below \n");
+
     getInputAndSetToHeap();
 }
