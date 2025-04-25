@@ -1,4 +1,5 @@
 #include "menu.h"
+
 char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_AND_code="\\u2227",
      *Logical_OR_Symbol_Pointer="\u2228",
