@@ -2,6 +2,9 @@
 #define LOGICAL_DEFINITIONS_H
 #include <stdio.h>
 #define NO_OF_ATOMS 5
+#define SPACE 32
+
+
 
 // Define the structure (typically in the header file)
 struct LogicalAtom {

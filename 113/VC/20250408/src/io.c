@@ -1,6 +1,6 @@
 #include "menu.h"
 
-struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',0 },{'q',0},{'r',0},{'s',0},{'t',0}};
+struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',1 },{'q',1},{'r',1},{'s',1},{'t',1}};
 
 char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_AND_code="\\u2227",
@@ -22,64 +22,106 @@ char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_Because_code="\\u2235";
 
 char *inputStringDynamic = NULL;
+int inputLength=0;
 
 int isLogicalSymbol(char *p, char*q, int wordLength);
+int getAtomPosition(int startPosition, int endPosition);
+int getWordLength(char *s);
 
 // wchar_t unicode_to_wchar(const char *unicode_escape);
 
-void freeInputStrings(){
-    free(inputStringDynamic); // Free the dynamically allocated memory
-    printf("The allocated memory for input is freed already \n");    
-}    
 
 
-int getWordLength(char *s){
-    char *ptr=s, space=(int) 32;
-    int i=0;
-
-
-    while(*ptr != '\0' && *ptr != space) {
-        ptr++; i++; 
-    }
-    
-    return i;
-}
-
-int isLogicalAtom(char c){
-    int atomPosition=-1, i=0;
+int getAtomValue(char c){
+    int atomValue=-1, i=0;
     for(i=0; i<NO_OF_ATOMS; i++){
         if(logicalAtom[i].symbol == c) {
-            atomPosition=1;
+            atomValue=logicalAtom[i].value;
             break;
         }
     }
-    return atomPosition;
+    return atomValue;
 }
 
-int changeInputToexpression(char *s, int startPosition, int inputLength){
+int getLogicalSymbol(int startPosition, int endPosition){
+    int symbolInt=0, i=0;
+    char *ptr=&inputStringDynamic[startPosition];
+
+    //for(i=startPosition; i< endPosition; i++){
+    //    if((int)ptr[i] == 92) {continue;};
+    //    tmpString[i-startPosition]=ptr[i];
+    //}
+
+    for(i=startPosition; i< endPosition; i++){
+        //if((int)ptr[i] == 92) {continue;};
+        switch((int)ptr[i]) {
+            case 0x2227: // Logical AND (∧)	
+                symbolInt = 0x2227; // Logical AND
+                break;
+            case 0x2228: // Logical OR (∨)
+                symbolInt = 0x2228; // Logical OR ('∨')
+                break;
+            case 0x00AC: // Unicode for '¬'
+                symbolInt = 0x00AC; // Logical NOT
+                break;
+            case 0x2192: // Logical Implication (→)
+                symbolInt = 0x2192; // Logical Implication
+                break;
+            case 0x2194: // Logical Equivalence (↔) 
+                symbolInt = 0x2194; // Logical Equivalence
+                break;
+            case 0x2200: // Logical All (∀)
+                symbolInt = 0x2200; // Logical All
+                break;
+            case 0x2203: // Logical Exists (∃)
+                symbolInt = 0x2203; // Logical Exists
+                break;
+            case 0x2234: // Logical Therefore (∴)
+                symbolInt = 0x2234; // Logical Therefore
+                break;
+            case 0x2235: // Logical Because (∵)
+                symbolInt = 0x2235; // Logical Because
+                break;
+            default: symbolInt=0;        
+        }
+    }    
+
+
+    return symbolInt;
+
+}
+int parseAndCalculateAlgebra(int startPosition, int endPosition){
+    int logicalResult=0, atomPosition=0, symbolInt=0;
+    char *ptr=inputStringDynamic;
+
+    while (*ptr != '\0') {
+        while(*ptr == ' ')  {ptr++; startPosition++;}    // clear space
+        atomPosition=getAtomPosition(startPosition, endPosition);
+        if (atomPosition > startPosition) {
+            symbolInt=getLogicalSymbol(startPosition, atomPosition);
+            logicalResult=calculateAlgebra(logicalResult, symbolInt, getAtomValue(ptr[atomPosition]));}
+        else logicalResult=getAtomValue(ptr[atomPosition]);
+        startPosition=atomPosition+1; // move to the next character
+        ptr=&inputStringDynamic[startPosition];
+    }  
+          
+    return logicalResult;
+}
+
+int getAtomPosition(int startPosition, int endPosition){
     // convert a string to an integer
-    int i=0, logicalResult=0, endPosition=0;
-    char *ptr=s, leftToRightslash=(int) 92;
-    char tmpArray[20];
+    int i=0, atomPosition=0;
+    char *ptr=inputStringDynamic;
 
     i=startPosition;    // the first character in an expression
-    while(*ptr == ' ')  {ptr++;i++;}    // clear space
-    startPosition += i;
-    while(*ptr == '\0') {
-        logicalResult=isLogicalAtom(*ptr);
-        ptr++; i++; 
-        if(logicalResult > 0) break;
-    }
-    if(logicalResult > 0) {
-        endPosition=startPosition+i;
-    }
- 
+    
+    while(ptr[i] != '\0') 
+        if(getAtomValue(ptr[i]) > -1) break;    // not TRUE and not FALSE
+        else i++;
+    
+    atomPosition=startPosition+i;
 
-
-    if((int)ptr[i] == 92) {};
-
-
-    return logicalResult;
+    return atomPosition;
 }
 
 int isLogicalSymbol(char *p, char*q, int wordLength){
@@ -113,7 +155,7 @@ void printCharOfInput(int inputLength){
     }
 }
 
-void printLogicExpression(char *s, int strLength){
+void printLogicExpressionBySpace(char *s, int strLength){
     //int start_position=0, end_position=strLength;
     char *ptr=s;
     int wordLength=0, startPosition=0, i=0, j=0;
@@ -150,7 +192,7 @@ void printLogicExpression(char *s, int strLength){
 int getInputAndSetToHeap(){
     // Dynamic allocation example
     int successFlag=1;
-    int inputLength=0;
+    
     size_t bufferSize = 0;
     printf("%30s", "Please enter your logical expression:  ");
     if (getline(&inputStringDynamic, &bufferSize, stdin) != -1) {
@@ -162,7 +204,7 @@ int getInputAndSetToHeap(){
         }
         inputLength = strlen(inputStringDynamic);
         printf("%30s   ", "Your input logical statement is:  ");
-        printLogicExpression(inputStringDynamic, inputLength);
+        printLogicExpressionBySpace(inputStringDynamic, inputLength);
         //printCharOfInput(inputLength);
     } else {
         printf("Error reading input.\n");
@@ -171,4 +213,22 @@ int getInputAndSetToHeap(){
         
 
     return successFlag;
+}
+
+void freeInputStrings(){
+    free(inputStringDynamic); // Free the dynamically allocated memory
+    printf("The allocated memory for input is freed already \n");    
+}    
+
+
+int getWordLength(char *s){
+    char *ptr=s;
+    int i=0;
+
+
+    while(*ptr != '\0' && *ptr != SPACE) {
+        ptr++; i++; 
+    }
+    
+    return i;
 }

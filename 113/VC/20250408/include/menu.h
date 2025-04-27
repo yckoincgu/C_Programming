@@ -6,7 +6,7 @@
 #include "logical_definitions.h"
 
 extern char *inputStringDynamic;
-
+extern int inputLength;
 
 void displayMenu();
 int getInputAndSetToHeap();
