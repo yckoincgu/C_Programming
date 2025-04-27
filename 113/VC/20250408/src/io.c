@@ -120,10 +120,10 @@ int getAtomPosition(int startPosition, int endPosition){
     i=startPosition;    // the first character in an expression
     
     while(ptr[i] != '\0') 
-        if(getAtomValue(ptr[i]) > -1) {i++; break;}    // not TRUE and not FALSE
+        if(getAtomValue(ptr[i]) > -1) {break;}    // not TRUE and not FALSE
         else i++;
     
-    atomPosition=startPosition+i-1;
+    atomPosition=i;
 
     return atomPosition;
 }
