@@ -47,11 +47,6 @@ int getLogicalSymbol(int startPosition, int endPosition){
     int symbolInt=0, i=0;
     char *ptr=&inputStringDynamic[startPosition];
 
-    //for(i=startPosition; i< endPosition; i++){
-    //    if((int)ptr[i] == 92) {continue;};
-    //    tmpString[i-startPosition]=ptr[i];
-    //}
-
     for(i=startPosition; i< endPosition; i++){
         //if((int)ptr[i] == 92) {continue;};
         switch((int)ptr[i]) {
@@ -91,17 +86,18 @@ int getLogicalSymbol(int startPosition, int endPosition){
 
 }
 int parseAndCalculateAlgebra(int startPosition, int endPosition){
-    int logicalResult=0, atomPosition=0, symbolInt=0;
+    int logicalResult=0, 
+    leftAtomPosition=0, rightAtomPosition=0, symbolInt=0;
     char *ptr=inputStringDynamic;
 
     while (*ptr != '\0') {
         while(*ptr == ' ')  {ptr++; startPosition++;}    // clear space
-        atomPosition=getAtomPosition(startPosition, endPosition);
-        if (atomPosition > startPosition) {
-            symbolInt=getLogicalSymbol(startPosition, atomPosition);
-            logicalResult=calculateAlgebra(logicalResult, symbolInt, getAtomValue(ptr[atomPosition]));}
-        else logicalResult=getAtomValue(ptr[atomPosition]);
-        startPosition=atomPosition+1; // move to the next character
+        leftAtomPosition=getAtomPosition(startPosition, endPosition);
+        if (leftAtomPosition > startPosition) {            
+            symbolInt=getLogicalSymbol(startPosition, leftAtomPosition);
+            logicalResult=calculateAlgebra(logicalResult, symbolInt, getAtomValue(ptr[leftAtomPosition]));}
+        else logicalResult=getAtomValue(ptr[leftAtomPosition]);
+        startPosition=leftAtomPosition+1; // move to the next character
         ptr=&inputStringDynamic[startPosition];
     }  
           
