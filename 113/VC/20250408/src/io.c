@@ -1,6 +1,6 @@
 #include "menu.h"
 
-struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',1 },{'q',1},{'r',1},{'s',1},{'t',1}};
+struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',0 },{'q',1},{'r',1},{'s',1},{'t',1}};
 
 char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_AND_code="\\u2227",
@@ -43,21 +43,32 @@ int getAtomValue(char c){
     }
     return atomValue;
 }
-
+int getUnicodeCodePoint(const char* utf8) {
+    if ((utf8[0] & 0xF0) == 0xE0 && (utf8[1] & 0xC0) == 0x80 && (utf8[2] & 0xC0) == 0x80) {
+        // 3-byte UTF-8 sequence
+        return ((utf8[0] & 0x0F) << 12) | ((utf8[1] & 0x3F) << 6) | (utf8[2] & 0x3F);
+    } else if ((utf8[0] & 0xE0) == 0xC0 && (utf8[1] & 0xC0) == 0x80) {
+        // 2-byte UTF-8 sequence
+        return ((utf8[0] & 0x1F) << 6) | (utf8[1] & 0x3F);
+    } else if (utf8[0] <= 0x7F) {
+        // 1-byte ASCII
+        return utf8[0];
+    }
+    return 0; // Invalid or unsupported UTF-8 sequence
+}
 int getLogicalSymbol(int startPosition, int endPosition){
-    int i=0, atomPosition=0;
-    printf("The start position is %d endPosition is %d \n", startPosition, endPosition);
+    int i=0, j=0, atomPosition=0, symbolInt=0;
+    //printf("The start position is %d endPosition is %d \n", startPosition, endPosition);
     atomPosition=getAtomPosition(startPosition, endPosition);
-    printf("The atom position is %d \n", atomPosition);
-
-
-
-    int symbolInt=0;
-    char *ptr=&inputStringDynamic[startPosition];
-
-    for(i=startPosition; i< endPosition; i++){
-        //if((int)ptr[i] == 92) {continue;};
-        switch((int)ptr[i]) {
+    //printf("The atom position is %d \n", atomPosition);
+    char tmpArray[20];
+    for (i=startPosition, j=0; i<atomPosition; i++,j++ )
+        if(inputStringDynamic[i] == ' ') {tmpArray[j]='\0'; break;}
+        else tmpArray[j]=inputStringDynamic[i];
+    tmpArray[j]='\0';  // null-terminated character for C string
+    symbolInt = getUnicodeCodePoint(tmpArray);
+ 
+        switch(symbolInt) {
             case 0x2227: // Logical AND (∧)	
                 symbolInt = 0x2227; // Logical AND
                 break;
@@ -87,7 +98,7 @@ int getLogicalSymbol(int startPosition, int endPosition){
                 break;
             default: symbolInt=0;        
         }
-    }    
+    //}    
 
 
     return symbolInt;
@@ -221,7 +232,7 @@ int getInputAndSetToHeap(){
 
 void freeInputStrings(){
     free(inputStringDynamic); // Free the dynamically allocated memory
-    printf("The allocated memory for input is freed already \n");    
+    //printf("The allocated memory for input is freed already \n");    
 }    
 
 
