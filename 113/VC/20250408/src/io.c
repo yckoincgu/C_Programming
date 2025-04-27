@@ -1,7 +1,6 @@
 #include "menu.h"
-#include "logical_definitions.h"
 
-struct LogicalAtom logicalAtom[5]={{'p',0 },{'q',0},{'r',0},{'s',0},{'t',0}};
+struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',0 },{'q',0},{'r',0},{'s',0},{'t',0}};
 
 char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_AND_code="\\u2227",
@@ -37,6 +36,8 @@ void freeInputStrings(){
 int getWordLength(char *s){
     char *ptr=s, space=(int) 32;
     int i=0;
+
+
     while(*ptr != '\0' && *ptr != space) {
         ptr++; i++; 
     }
@@ -44,7 +45,46 @@ int getWordLength(char *s){
     return i;
 }
 
+int isLogicalAtom(char c){
+    int atomPosition=-1, i=0;
+    for(i=0; i<NO_OF_ATOMS; i++){
+        if(logicalAtom[i].symbol == c) {
+            atomPosition=1;
+            break;
+        }
+    }
+    return atomPosition;
+}
+
+int changeInputToexpression(char *s, int startPosition, int inputLength){
+    // convert a string to an integer
+    int i=0, logicalResult=0, endPosition=0;
+    char *ptr=s, leftToRightslash=(int) 92;
+    char tmpArray[20];
+
+    i=startPosition;    // the first character in an expression
+    while(*ptr == ' ')  {ptr++;i++;}    // clear space
+    startPosition += i;
+    while(*ptr == '\0') {
+        logicalResult=isLogicalAtom(*ptr);
+        ptr++; i++; 
+        if(logicalResult > 0) break;
+    }
+    if(logicalResult > 0) {
+        endPosition=startPosition+i;
+    }
+ 
+
+
+    if((int)ptr[i] == 92) {};
+
+
+    return logicalResult;
+}
+
 int isLogicalSymbol(char *p, char*q, int wordLength){
+    // input character or string is a logical symbol
+    // comparing 2 or 3 characters for a symbol
     char *qtr=q;    // Symbol_pointer
          
     int i=0, matchSymbol=1, // suppose match symbol at first

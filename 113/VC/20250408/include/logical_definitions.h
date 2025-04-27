@@ -1,12 +1,14 @@
 #ifndef LOGICAL_DEFINITIONS_H
 #define LOGICAL_DEFINITIONS_H
 #include <stdio.h>
+#define NO_OF_ATOMS 5
 
 // Define the structure (typically in the header file)
 struct LogicalAtom {
     char symbol;
     int value;
 };
+extern int noOfAtoms; // Number of logical atoms
 
 // Declare an external variable of the struct type
 extern struct LogicalAtom logicalAtom[5];
@@ -34,15 +36,15 @@ extern char *Logical_AND_Symbol_Pointer,
 #endif /* LOGICAL_DEFINITIONS_H */
 
 /* pointer codes of utf-8 logical operators 
-Logical AND (∧): \u2227
-Logical OR (∨): \u2228
-Logical NOT (¬): \u00AC
-Logical Implication (→): \u2192
-Logical Equivalence (↔): \u2194
-Universal Quantifier (∀) - Logical All: \u2200
-Existential Quantifier (∃) - Logical Exists: \u2203
-Therefore (∴): \u2234
-Because (∵): \u2235
+Logical AND (∧): \u2227, 0x227
+Logical OR (∨): \u2228, 0x228
+Logical NOT (¬): \u00AC, 0xAC
+Logical Implication (→): \u2192, 0x2192
+Logical Equivalence (↔): \u2194, 0x2194
+Universal Quantifier (∀) - Logical All: \u2200, 0x2200
+Existential Quantifier (∃) - Logical Exists: \u2203, 0x2203
+Therefore (∴): \u2234, 0x2234
+Because (∵): \u2235, 0x2235
 */
 
 /* programming codes of utf-8 logical operators
