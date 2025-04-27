@@ -3,8 +3,8 @@
 BINDIR=bin
 SRCDIR=src
 OBJDIR=obj
-INCDIR = include
-DEPDIR = .deps
+INCDIR =include
+DEPDIR =.deps
 
 BIN = $(BINDIR)/a
 SOURCES = $(wildcard $(SRCDIR)/*.c)
