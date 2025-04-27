@@ -113,7 +113,7 @@ int getInputAndSetToHeap(){
         printLogicExpression(inputStringDynamic, stringLength);
         
 
-        /*
+        
         printf("Analysis of your input is presented below\n");
         printf("The length of %s is %d \n", inputStringDynamic, stringLength);
         int i=0;
@@ -124,11 +124,12 @@ int getInputAndSetToHeap(){
             }
             else printf("%c\n", inputStringDynamic[i]);
         }
-        */   
+           
     } else {
         printf("Error reading input.\n");
         successFlag=0;
     }
+
     return successFlag;
 }
 
@@ -158,5 +159,5 @@ void displayMenu() {
     printf("\n");
     
 
-    getInputAndSetToHeap();
+    //getInputAndSetToHeap();
 }

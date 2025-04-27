@@ -3,10 +3,12 @@
 
 int main() {
     displayMenu();
-    int inputInt=0;
+    //int inputInt=0;
     if(getInputAndSetToHeap()>0) {  // if succeed
-        inputInt=atoi(inputStringDynamic);
-        printBinary(inputInt);
+        //inputInt=atoi(inputStringDynamic);
+        //printBinary(inputInt);
+        printf("test main \n");
+
     }
         
 
