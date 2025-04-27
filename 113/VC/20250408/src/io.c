@@ -28,6 +28,7 @@ int isLogicalSymbol(char *p, char*q, int wordLength);
 int getAtomPosition(int startPosition, int endPosition);
 int getWordLength(char *s);
 
+
 // wchar_t unicode_to_wchar(const char *unicode_escape);
 
 
@@ -44,7 +45,14 @@ int getAtomValue(char c){
 }
 
 int getLogicalSymbol(int startPosition, int endPosition){
-    int symbolInt=0, i=0;
+    int i=0, atomPosition=0;
+    printf("The start position is %d endPosition is %d \n", startPosition, endPosition);
+    atomPosition=getAtomPosition(startPosition, endPosition);
+    printf("The atom position is %d \n", atomPosition);
+
+
+
+    int symbolInt=0;
     char *ptr=&inputStringDynamic[startPosition];
 
     for(i=startPosition; i< endPosition; i++){
@@ -87,7 +95,7 @@ int getLogicalSymbol(int startPosition, int endPosition){
 }
 int parseAndCalculateAlgebra(int startPosition, int endPosition){
     int logicalResult=0, 
-    leftAtomPosition=0, rightAtomPosition=0, symbolInt=0;
+    leftAtomPosition=0, symbolInt=0;
     char *ptr=inputStringDynamic;
 
     while (*ptr != '\0') {
@@ -112,10 +120,10 @@ int getAtomPosition(int startPosition, int endPosition){
     i=startPosition;    // the first character in an expression
     
     while(ptr[i] != '\0') 
-        if(getAtomValue(ptr[i]) > -1) break;    // not TRUE and not FALSE
+        if(getAtomValue(ptr[i]) > -1) {i++; break;}    // not TRUE and not FALSE
         else i++;
     
-    atomPosition=startPosition+i;
+    atomPosition=startPosition+i-1;
 
     return atomPosition;
 }

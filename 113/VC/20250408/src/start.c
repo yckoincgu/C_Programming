@@ -8,7 +8,7 @@ int main() {
     if(getInputAndSetToHeap()>0) {  // if succeed
         //logicalResult=calculateAlgebra(1, 0x2227, 0);
         logicalResult=parseAndCalculateAlgebra(0, inputLength);
-        //printf("The result of logical expression is: %d \n", logicalResult);
+        printf("The inputLength is: %d \n", inputLength);
         printf("Result: %d\n", logicalResult);
         printf("test main \n");
 
