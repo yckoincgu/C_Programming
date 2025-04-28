@@ -117,7 +117,8 @@ int parseAndCalculateAlgebra(int startPosition, int endPosition){
             logicalResult=calculateAlgebra(logicalResult, symbolInt, getAtomValue(ptr[leftAtomPosition]));}
         else logicalResult=getAtomValue(ptr[leftAtomPosition]);
         startPosition=leftAtomPosition+1; // move to the next character
-        ptr=&inputStringDynamic[startPosition];
+        if(startPosition < endPosition) ptr=&inputStringDynamic[startPosition];
+        else break;
     }  
           
     return logicalResult;

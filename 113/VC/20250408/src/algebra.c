@@ -19,6 +19,7 @@ int calculateAlgebra(int result, int operatorChar, int rightAtom) {
 			case 0x00AC: // Unicode for '¬'
                 // Assuming '!' represents logical NOT (unary, so might need different handling)
                 // This case won't be directly reached in the current function signature.
+                result = !result;
                 break;
 
             default:
