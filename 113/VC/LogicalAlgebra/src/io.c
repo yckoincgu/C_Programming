@@ -2,6 +2,7 @@
 
 struct LogicalAtom logicalAtom[NO_OF_ATOMS]={{'p',0 },{'q',1},{'r',1},{'s',1},{'t',1}};
 
+
 char *Logical_AND_Symbol_Pointer="\u2227",
      *Logical_AND_code="\\u2227",
      *Logical_OR_Symbol_Pointer="\u2228",
