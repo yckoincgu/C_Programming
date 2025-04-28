@@ -31,7 +31,29 @@ void displayMenu() {
     printf("RightParentheses: ) \n");
     printf("Logical statements: P, Q, R, T \n");
     printf("\n");
-    
+    printf("1. Resolve an algebra \n");
+    printf("2. Display a table for an algebra \n");
+    printf("Enter a choice with integer \n");
+    int logicalResult=0;
+    char choice;
+    scanf(" %c", &choice);
 
-    //getInputAndSetToHeap();
+ 
+
+    switch(choice) {
+        case '1':
+            if(getInputAndSetToHeap()>0)  // if succeed
+                logicalResult=parseAndCalculateAlgebra(0, inputLength);            
+            if (logicalResult == 0) printf("The logical algebra value is False\n");
+            if (logicalResult == 1) printf("The logical algebra value is True\n");
+            break;
+        case '2':
+            printf("You choose to display a table for an algebra \n");
+            break;
+        default:
+            printf("Invalid choice. Please try again.\n");
+            break;
+    }
+    freeInputStrings();
+
 }
