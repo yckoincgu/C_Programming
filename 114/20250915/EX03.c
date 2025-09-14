@@ -1,12 +1,12 @@
 #include <stdio.h>
-void EX01();
-void EX02();         // function prototype
+void EX01();         // Declaration of function
+void EX02();         // Declaration of function
 
 int main()
 {
  
-    EX01();
-    EX02();
+    EX01();         // function call
+    EX02();         // function call
     return 0;
 }
 
