@@ -1,6 +1,36 @@
 {
-    "files.associations": {
-        "string.h": "c",
-        "menu.h": "c"
+    // Terminal environment setting for the 'make' utility
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};C:\\msys64\\usr\\bin;C:\\msys64\\ucrt64\\bin"
+    },
+
+    // C compiler path (changed from g++ to gcc for C projects)
+    "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+
+    // C/C++ debugger path
+    "C_Cpp.default.debuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+    
+    // IntelliSense mode for C
+    "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+    
+    // Include paths for IntelliSense
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/include/**",
+        "${workspaceFolder}/src/**",
+        "C:\\msys64\\ucrt64\\include\\**"
+    ],
+    
+    // Define compiler arguments for IntelliSense
+    "C_Cpp.default.compilerArgs": [
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-pedantic"
+    ],
+    
+    // Enable file watching for large workspaces
+    "files.watcherExclude": {
+        "**/obj/**": true,
+        "**/bin/**": true
     }
 }

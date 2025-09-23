@@ -2,16 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Makefile Program",
+            "name": "Debug Project",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/a",  // Path to your compiled executable
+            "program": "${workspaceFolder}/bin/a.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false,
+            "externalConsole": true,
             "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -19,8 +20,32 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Build with Make",  // This should match your build task label
-            "miDebuggerPath": "/usr/bin/gdb"     // Path to your gdb
+            "preLaunchTask": "build",
+            "logging": {
+                "moduleLoad": false,
+                "engineLogging": false
+            }
+        },
+        {
+            "name": "Debug Single File",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build-single-file"
         }
     ]
 }

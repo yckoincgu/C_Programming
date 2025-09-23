@@ -1,8 +1,7 @@
-#include  "menu.h"
-
+#include "menu.h"
 
 void clearScreen() {
-    system("clear");
+    system("clear");  // Use "cls" for Windows, "clear" for Linux/Mac
 }
 
 void displayMenu() {

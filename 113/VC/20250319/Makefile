@@ -2,12 +2,12 @@
 BIN = decimal_to_binary
 SOURCES = decimal_to_binary_main.c decimal_to_binary_transfer.c
 OBJECTS = $(SOURCES:.c=.o)
-CFLAGS = -g3 -Wall
+CFLAGS = -g3 -Wall -std=c11
 
 ALL: $(BIN)
 
 $(BIN): $(OBJECTS)
-	gcc $(CFLAGS) $(OBJECTS) -o $(BIN)
+	gcc $(CFLAGS) $(OBJECTS) -o $(BIN) -lm
 
 %.o: %.c
 	gcc $(CFLAGS) -c $< -o $@

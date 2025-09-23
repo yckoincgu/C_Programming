@@ -1,0 +1,20 @@
+{
+    // Terminal environment setting for the 'make' utility
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};C:\\msys64\\usr\\bin"
+    },
+
+    // C++ compiler path
+    "C_Cpp.default.compilerPath": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+
+    // C/C++ debugger path
+    "C_Cpp.default.debuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+    
+    // Optional: Include paths for IntelliSense
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "C:\\msys64\\ucrt64\\include\\**",
+        "C:\\msys64\\ucrt64\\lib\\gcc\\x86_64-w64-mingw32\\15.1.0\\include\\**",
+        "C:\\msys64\\ucrt64\\lib\\gcc\\x86_64-w64-mingw32\\15.1.0\\include-fixed\\**"
+    ]
+}

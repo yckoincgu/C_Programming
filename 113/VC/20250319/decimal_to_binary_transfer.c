@@ -1,33 +1,35 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-char* transfer(int x){
-    if (x<0){
-        x = x*-1;
-    }
-    int bin[32];
-    int count = 0;
-    if (x==0){
-    return 0;
+char* transfer(int x) {
+    // Handle special case for 0
+    if (x == 0) {
+        char* result = malloc(2 * sizeof(char));
+        result[0] = '0';
+        result[1] = '\0';
+        return result;
     }
     
-    if (x==1){
-        return 1;
+    // Calculate the number of bits needed
+    int temp = x;
+    int num_bits = 0;
+    while (temp > 0) {
+        num_bits++;
+        temp /= 2;
     }
-
-    while (x>1){
-        bin[count] = x%2;
-        x = x/2;
-        count+=1;
+    
+    // Allocate memory for the binary string (including null terminator)
+    char* binary = malloc((num_bits + 1) * sizeof(char));
+    
+    // Convert decimal to binary
+    int index = num_bits - 1;
+    temp = x;
+    while (temp > 0) {
+        binary[index] = (temp % 2) + '0'; // Convert digit to character
+        temp /= 2;
+        index--;
     }
-
-    static char result[100] = "1";
-    for (int i = count-1; i>=0; i--) {
-        char temp[10];
-        sprintf(temp, "%d", bin[i]);
-        strcat(result, temp);
-    }
-    //printf("here: %s\n",result);
-    return result;
-
+    binary[num_bits] = '\0'; // Null terminate the string
+    
+    return binary;
 }
