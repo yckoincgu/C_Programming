@@ -14,17 +14,6 @@
 
 
 // Function to print the binary representation of an unsigned char
-/*
-i value	Operation: (byte >> i) & 1	Binary Representation	Result
-i = 7	(5 >> 7) & 1	00000101 >> 7 = 00000000 → 00000000 & 00000001	0
-i = 6	(5 >> 6) & 1	00000101 >> 6 = 00000000 → 00000000 & 00000001	0
-i = 5	(5 >> 5) & 1	00000101 >> 5 = 00000000 → 00000000 & 00000001	0
-i = 4	(5 >> 4) & 1	00000101 >> 4 = 00000000 → 00000000 & 00000001	0
-i = 3	(5 >> 3) & 1	00000101 >> 3 = 00000000 → 00000000 & 00000001	0
-i = 2	(5 >> 2) & 1	00000101 >> 2 = 00000001 → 00000001 & 00000001	1
-i = 1	(5 >> 1) & 1	00000101 >> 1 = 00000010 → 00000010 & 00000001	0
-i = 0	(5 >> 0) & 1	00000101 >> 0 = 00000101 → 00000101 & 00000001	1
-*/
 void print_byte_binary(unsigned char byte) {
     int i;
     for (i = CHAR_BIT - 1; i >= 0; i--) { // CHAR_BIT is typically 8
@@ -35,11 +24,26 @@ void print_byte_binary(unsigned char byte) {
 
 int main() {
     printf("--- C Data Types for Bitwise Operations ---\n\n");
-    // unsigned char (8 bits typically)
-    unsigned char sensor_flags = 0x05; // 00000101 in binary
-    printf("1. unsigned char:\n");
-    printf("   Initial sensor_flags: 0x%02X (binary: ", sensor_flags);
-    print_byte_binary(sensor_flags);
-    printf(")\n");
+    // unsigned int (often 32 bits)
+    unsigned int control_register = 0xAAAA5555;
+    printf("   Control Register: 0x%08X\n", control_register);
+    /* Check if a specific bit is set (e.g., 16th bit)
+       Right shift by 16 positions moves the upper 16 bits to the lower 16 positions:
+
+        Before shift:
+        [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0] [0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1]
+        Upper 16 bits                      Lower 16 bits
+
+        After >> 16:
+        [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] [1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0]
+        New upper 16 bits (zeros)          Original upper 16 bits now in lower position
+    */ 
+    if ((control_register >> 16) & 1) {
+        printf("   Bit 16 is set.\n");
+    } else {
+        printf("   Bit 16 is not set.\n");
+    }
+    printf("\n");
+
     return 0;
 }

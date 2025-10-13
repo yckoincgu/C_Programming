@@ -14,17 +14,6 @@
 
 
 // Function to print the binary representation of an unsigned char
-/*
-i value	Operation: (byte >> i) & 1	Binary Representation	Result
-i = 7	(5 >> 7) & 1	00000101 >> 7 = 00000000 → 00000000 & 00000001	0
-i = 6	(5 >> 6) & 1	00000101 >> 6 = 00000000 → 00000000 & 00000001	0
-i = 5	(5 >> 5) & 1	00000101 >> 5 = 00000000 → 00000000 & 00000001	0
-i = 4	(5 >> 4) & 1	00000101 >> 4 = 00000000 → 00000000 & 00000001	0
-i = 3	(5 >> 3) & 1	00000101 >> 3 = 00000000 → 00000000 & 00000001	0
-i = 2	(5 >> 2) & 1	00000101 >> 2 = 00000001 → 00000001 & 00000001	1
-i = 1	(5 >> 1) & 1	00000101 >> 1 = 00000010 → 00000010 & 00000001	0
-i = 0	(5 >> 0) & 1	00000101 >> 0 = 00000101 → 00000101 & 00000001	1
-*/
 void print_byte_binary(unsigned char byte) {
     int i;
     for (i = CHAR_BIT - 1; i >= 0; i--) { // CHAR_BIT is typically 8
@@ -35,11 +24,26 @@ void print_byte_binary(unsigned char byte) {
 
 int main() {
     printf("--- C Data Types for Bitwise Operations ---\n\n");
-    // unsigned char (8 bits typically)
-    unsigned char sensor_flags = 0x05; // 00000101 in binary
-    printf("1. unsigned char:\n");
-    printf("   Initial sensor_flags: 0x%02X (binary: ", sensor_flags);
-    print_byte_binary(sensor_flags);
-    printf(")\n");
+
+    uint8_t crc_byte = 0xCD; // Guaranteed 8 bits
+/*
+    A CRC Byte is an 8-bit error-detection code 
+    calculated from data using polynomial division. 
+    It's widely used in communication protocols, storage systems, 
+    and networking to ensure data integrity during transmission or storage.
+*/
+    printf("   CRC Byte (uint8_t): 0x%02X\n", crc_byte);
+
+    uint16_t timer_value = 0x1234; // Guaranteed 16 bits
+    printf("   Timer Value (uint16_t): 0x%04X\n", timer_value);
+
+    uint32_t network_mask = 0xFFFFFF00; // Guaranteed 32 bits
+    printf("   Network Mask (uint32_t): 0x%08X\n", network_mask);
+
+    uint64_t large_id = 0xFEDCBA9876543210ULL; // Guaranteed 64 bits (ULL suffix for unsigned long long)
+    printf("   Large ID (uint64_t): 0x%016llX\n", large_id);
+    printf("\n");
+
+
     return 0;
 }

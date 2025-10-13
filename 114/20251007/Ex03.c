@@ -14,17 +14,6 @@
 
 
 // Function to print the binary representation of an unsigned char
-/*
-i value	Operation: (byte >> i) & 1	Binary Representation	Result
-i = 7	(5 >> 7) & 1	00000101 >> 7 = 00000000 → 00000000 & 00000001	0
-i = 6	(5 >> 6) & 1	00000101 >> 6 = 00000000 → 00000000 & 00000001	0
-i = 5	(5 >> 5) & 1	00000101 >> 5 = 00000000 → 00000000 & 00000001	0
-i = 4	(5 >> 4) & 1	00000101 >> 4 = 00000000 → 00000000 & 00000001	0
-i = 3	(5 >> 3) & 1	00000101 >> 3 = 00000000 → 00000000 & 00000001	0
-i = 2	(5 >> 2) & 1	00000101 >> 2 = 00000001 → 00000001 & 00000001	1
-i = 1	(5 >> 1) & 1	00000101 >> 1 = 00000010 → 00000010 & 00000001	0
-i = 0	(5 >> 0) & 1	00000101 >> 0 = 00000101 → 00000101 & 00000001	1
-*/
 void print_byte_binary(unsigned char byte) {
     int i;
     for (i = CHAR_BIT - 1; i >= 0; i--) { // CHAR_BIT is typically 8
@@ -35,11 +24,23 @@ void print_byte_binary(unsigned char byte) {
 
 int main() {
     printf("--- C Data Types for Bitwise Operations ---\n\n");
+
+    // --- 1. Standard Unsigned Integer Types (Recommended for general use) ---
+    // These are excellent for bit manipulation due to well-defined behavior.
+
     // unsigned char (8 bits typically)
     unsigned char sensor_flags = 0x05; // 00000101 in binary
-    printf("1. unsigned char:\n");
-    printf("   Initial sensor_flags: 0x%02X (binary: ", sensor_flags);
+    // Clear a bit (e.g., clear 0th bit, which is 2^0 = 1, so ~0x01)
+    sensor_flags &= ~(1 << 0); 
+    /*
+    Visual representation: ~(1 << 0)
+    0 0 0 0 0 0 0 1   ← Input to NOT operator
+    ~ ~ ~ ~ ~ ~ ~ ~   ← Flip every bit
+    1 1 1 1 1 1 1 0   ← Result
+    */
+    printf("   After clearing 0th bit: 0x%02X (binary: ", sensor_flags);
     print_byte_binary(sensor_flags);
     printf(")\n");
+
     return 0;
 }
