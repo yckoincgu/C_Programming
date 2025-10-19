@@ -1,0 +1,18 @@
+1.  Declaration: int numbers[5]; 
+    declares an array named numbers. 
+    The [5] specifies that it has 5 elements, 
+    which are indexed from 0 to 4.
+2.  Declaration and initialization example: int numbers[5] = {10, 20, 30, 40, 50}; 
+3.  Input Loop: The first for loop runs 5 times (for $i=0$ to $4$).
+    * printf("Enter integer #%d: ", i + 1); 
+      displays a user-friendly prompt (starting the count at 1).
+    * scanf("%d", &numbers[i]);  
+      3.1 The %d tells scanf to expect an integer 
+      3.2 &numbers[i] 
+          passes the memory address of the current array element 
+          (e.g., &numbers[0], &numbers[1], etc.) 
+          where the entered value should be stored. 
+4.  Output Loop: The second for loop also runs 5 times.
+    * printf("You entered: %d\n", numbers[i]); 
+      retrieves and prints each value stored in the array.
+    * %d is used again to format the integer for output.

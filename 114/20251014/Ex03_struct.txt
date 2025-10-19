@@ -1,0 +1,5 @@
+(A) Using typedef (Common Practice)
+    To avoid writing struct tag_name every time, 
+    you can use typedef to create an alias book for the structure. 
+    typedef struct Book book; // Creating an alias 'Book' for 'struct Book'
+    book book3; // Now you can declare variables using the alias

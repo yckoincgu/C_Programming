@@ -1,0 +1,38 @@
+struct Book {
+    char title[100];
+    char author[100];
+    int pages;
+    float price;
+};
+
+(A) Declaring Structure Variables
+    Once the structure is defined, 
+    you can declare variables of that type.
+(B) Using the struct Keyword
+    In C, you need to use the struct keyword 
+    when declaring structure variables.
+    struct Book book1; // Declaring a variable of type struct Book  
+    struct Book book2; // Another variable of type struct Book
+(C) Initializing Structure Variables
+    You can initialize structure variables at the time of declaration.
+    struct 
+    Book book1 = {"The Great Gatsby", "F. Scott Fitzgerald", 180, 10.99};
+    Book book2 = {"1984", "George Orwell", 328, 8.99}; 
+(D) Accessing Structure Members
+    strcpy(book1.title, "The C Programming Language");
+    strcpy(book1.author, "Dennis Ritchie");
+    book1.pages = 272;
+    book1.price = 45.99;
+(E) Accessing Members via Pointers
+    struct Book *ptr = &book1;
+    printf("Title: %s\n", ptr->title);
+    printf("Author: %s\n", ptr->author);
+    printf("Pages: %d\n", ptr->pages);
+    printf("Price: $%.2f\n", ptr->price);  
+(F) Pointer vs. Variable in C 
+    When using a pointer to a structure, 
+    you use the arrow operator (->) to access members.
+    For a structure variable, 
+    you use the dot operator (.) to access members.
+
+    
