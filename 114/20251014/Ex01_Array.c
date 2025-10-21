@@ -12,7 +12,6 @@ int main() {
 
     for (i = 0; i < 5; i++) {
         printf("Enter integer #%d: ", i + 1);
-        
         // Use the address-of operator (&) to store the input 
         // directly into the i-th element of the array.
         if (scanf("%d", &numbers[i]) != 1) {
