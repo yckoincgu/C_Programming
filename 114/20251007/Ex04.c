@@ -32,7 +32,7 @@ int main() {
     unsigned char sensor_flags = 0x05; // 00000101 in binary
 
     // Toggle a bit (e.g., toggle 1st bit, which is 2^1 = 2, so 0x02)
-    sensor_flags ^= (1 << 1); 
+    sensor_flags ^= (1 << 1); // ^ means bitwise XOR
     /*
     Visual representation: 1 << 1
         0 0 0 0 0 0 0 1   ← Original (1)

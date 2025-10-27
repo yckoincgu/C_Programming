@@ -42,6 +42,8 @@ int main() {
 
     uint64_t large_id = 0xFEDCBA9876543210ULL; // Guaranteed 64 bits (ULL suffix for unsigned long long)
     printf("   Large ID (uint64_t): 0x%016llX\n", large_id);
+    // ll format specifier for unsigned long long
+    // at least 16 characters wide
     printf("\n");
 
 

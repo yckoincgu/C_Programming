@@ -38,6 +38,8 @@ int main() {
     // unsigned char (8 bits typically)
     unsigned char sensor_flags = 0x05; // 00000101 in binary
     printf("1. unsigned char:\n");
+    // print an unsigned hexadecimal integer by X format specifier
+     printf("   Initial sensor_flags: 0x%02X (binary: ", sensor_flags);
     printf("   Initial sensor_flags: 0x%02X (binary: ", sensor_flags);
     print_byte_binary(sensor_flags);
     printf(")\n");
