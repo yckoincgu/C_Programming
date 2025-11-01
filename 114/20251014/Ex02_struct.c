@@ -72,6 +72,8 @@ int main() {
         printf("  Pages:  %d\n", (ptr+index)->pages);
         printf("  Price:  $%.2f\n", (ptr+index)->price);
         printf("----------------------------------------\n");
+        printf("conslusion: ptr[index] is same as *(ptr+index) \n");
+
 
     return 0;
 }
