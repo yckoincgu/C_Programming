@@ -57,12 +57,20 @@ int main() {
 
     // pointer to a structure example
     struct Book *ptr = &library[0]; // pointer to the first book
-    printf("\n✅ Your choice by pointer:\n");
+    printf("\n✅ Retrieving a variable, i.e. ptr[index] :\n");
         printf("----------------------------------------\n");
         printf("  Title:  %s\n", ptr[index].title);
         printf("  Author: %s\n", ptr[index].author);
         printf("  Pages:  %d\n", ptr[index].pages);
         printf("  Price:  $%.2f\n", ptr[index].price);
+        printf("----------------------------------------\n");
+
+    printf("\n✅ Getting a pointer by ptr+index then retrieving:\n");
+        printf("----------------------------------------\n");
+        printf("  Title:  %s\n", (ptr+index)->title);
+        printf("  Author: %s\n", (ptr+index)->author);
+        printf("  Pages:  %d\n", (ptr+index)->pages);
+        printf("  Price:  $%.2f\n", (ptr+index)->price);
         printf("----------------------------------------\n");
 
     return 0;
