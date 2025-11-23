@@ -1,0 +1,66 @@
+YOUR C PROGRAM                       SQLITE LIBRARY (Internal)
+      +------------------+                 +---------------------------+
+      |                  |                 |                           |
+  1.  |   main()         | --------------> |  sqlite3_exec()           |
+      |   (Calls Exec)   |    (Start)      |    |                      |
+      |                  |                 |    v                      |
+      +------------------+                 |  [Execute SQL Query]      |
+                                           |    |                      |
+                                           |    v                      |
+          (Wait...)                        |  [Found Row 1?] -> NO --->| FINISH (Step 6)
+                                           |    | YES                  |
+                                           |    v                      |
+      +------------------+                 |  [Prepare Data]           |
+      |                  |                 |    (argc, argv)           |
+  2.  |   callback()     | <-------------- |    |                      |
+      |   (You wrote it) |    (Call)       |    |                      |
+      |                  |                 |    |                      |
+  3.  |   [Print Data]   |                 |    |                      |
+      |   return 0;      | --------------> |    |                      |
+      |                  |    (Return)     |    v                      |
+      +------------------+                 |  [Found Row 2?]           |
+                                           |    | YES                  |
+                                           |    v                      |
+      +------------------+                 |  [Prepare Data]           |
+      |                  |                 |    (argc, argv)           |
+  4.  |   callback()     | <-------------- |    |                      |
+      |   (Runs again)   |    (Call)       |    |                      |
+      |                  |                 |    |                      |
+  5.  |   return 0;      | --------------> |    |                      |
+      +------------------+                 |    v                      |
+                                           |  [Found Row 3?] -> NO     |
+                                           |    |                      |
+                                           |    v                      |
+      +------------------+                 |  [Cleanup & Exit]         |
+  6.  |   main()         | <-------------- |                           |
+      |   (Resumes)      |    (Done)       +---------------------------+
+      +------------------+
+
+      SQLite looks at the database. 
+      When it finds the first matching row (e.g., Paul)
+      it passes to callback(...)
+     +-------------------------------------------------------------+
+     | 1. void *data        ->  The custom flag you passed in main |
+     | 2. int argc          ->  5 (Number of columns)              |
+     | 3. char **argv       ->  {"1", "Paul", "32", ...} (Values)  |
+     | 4. char **azColName  ->  {"ID", "NAME", "AGE", ...} (Names) |
+     +-------------------------------------------------------------+
+
+
+
+/* Inside SQLite Library */
+
+// This weird syntax defines what the callback MUST look like:
+// Return type: int
+// Parameters: (void*, int, char**, char**)
+typedef int (*sqlite_callback_t)(void*, int, char**, char**);
+
+int sqlite3_exec(
+    sqlite3* db, 
+    const char *sql, 
+    sqlite_callback_t callback, // <--- Expecting a function with that specific shape
+    void *data,
+    char **errmsg
+); 
+
+
