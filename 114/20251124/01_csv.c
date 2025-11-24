@@ -67,13 +67,17 @@ void read_csv_file() {
 
         Person p;
 
-        // 3. Parse fields using strtok
+        // 3. Parse fields using strtok; Splitting the line by commas (strtok).
         // ID
+        /* First Call: strtok(buffer, ",") - Starts with original buffer  */
         token = strtok(buffer, ",");
         if (token == NULL) continue;
         p.id = atoi(token);
 
         // Name
+        /* Subsequent Calls: strtok(NULL, ",") - 
+           Continues from last position
+        */
         token = strtok(NULL, ",");
         if (token == NULL) strcpy(p.name, "Unknown");
         else strncpy(p.name, token, MAX_FIELD_LENGTH); 
