@@ -10,7 +10,7 @@
 typedef struct {
     int id;
     char name[MAX_FIELD_LENGTH];
-    int age;
+    int  age;
     char city[MAX_FIELD_LENGTH];
 } Person;
 
